@@ -11,7 +11,7 @@ public class AddCommand extends RCommand{
     }
     @Override
     public void execute(Processor main) {
-        int sum = this.Quelle1.load() + this.Quelle2.load() ;
+        int sum = this.Value1 + this.Value2 ;
         main.getMWB().SendToBuffer(new Tuple<RegisterAddress,Integer>(Ziel.getAddress(),sum));
 
     }

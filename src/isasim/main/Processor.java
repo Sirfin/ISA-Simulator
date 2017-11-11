@@ -13,11 +13,10 @@ import java.util.List;
 public class Processor {
     public  int REGISTER_COUNT = 32 ;
     public  int  REGISTER_SIZE = 32 ;
-
     public List<Register> Registerbank = new ArrayList<Register>() ;
-
     private MemoryWriteBack MWB = new MemoryWriteBack(this) ;
     private Execute exec = new Execute(this) ;
+
     public Processor(){
         initRegister();
         Test();
@@ -30,6 +29,7 @@ public class Processor {
         exec.SendToBuffer(a);
         exec.OnTick();
         MWB.OnTick();
+        System.out.println(Integer.toHexString(Registerbank.get(2).load()));
     }
     private void initRegister(){
         for (int i = 0 ; i< REGISTER_COUNT ; i++){
