@@ -3,7 +3,10 @@ package isasim.commands;
 import isasim.main.Processor;
 import isasim.physical.Register;
 
-public class RCommand extends Command {
+public abstract class RCommand extends Command {
+    public abstract String getName() ;
+
+
     public Register getQuelle1() {
         return Quelle1;
     }
@@ -21,7 +24,9 @@ public class RCommand extends Command {
     }
 
     int Value1 ;
-
+    public int getValue1(){return Value1;}
+    public int getValue2(){return Value2;}
+    public Register getZiel(){return Ziel;}
     public void setValue2(int value2) {
         Value2 = value2;
     }
@@ -32,8 +37,5 @@ public class RCommand extends Command {
         this.Quelle2 = q2 ;
         this.Ziel = z ;
     }
-    @Override
-    public void execute(Processor main) {
-
-    }
+    public abstract void execute(Processor main) ;
 }

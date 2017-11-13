@@ -11,6 +11,12 @@ public class Decode extends PipelineStage {
     public Decode(Processor p){
         super(p) ;
     }
+
+    @Override
+    public String GetStringFormatOfPipelineStage() {
+        return null;
+    }
+
     @Override
     public void OnTick() {
     }

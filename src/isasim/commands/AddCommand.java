@@ -9,6 +9,12 @@ public class AddCommand extends RCommand{
     public AddCommand(Register q1 , Register q2, Register z){
         super(q1,q2,z) ;
     }
+
+    @Override
+    public String getName() {
+        return "Add" ;
+    }
+
     @Override
     public void execute(Processor main) {
         int sum = this.Value1 + this.Value2 ;

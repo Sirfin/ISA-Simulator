@@ -19,4 +19,13 @@ public class MemoryWriteBack extends PipelineStage {
     public void SendToBuffer(Tuple<RegisterAddress,Integer> a){
         Buffer.addLast(a);
     }
+
+
+    @Override
+    public String GetStringFormatOfPipelineStage() {
+        if (Buffer.size() > 0) {
+            return  Buffer.get(0).y.toString() + " -> R" + String.valueOf(Buffer.get(0).x.m_Address) ;
+        }
+        return "NOOP" ;
+    }
 }

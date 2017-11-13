@@ -10,4 +10,5 @@ public abstract class PipelineStage {
     public PipelineStage(Processor p ){
         this.p = p ;
     }
+    public abstract String GetStringFormatOfPipelineStage() ;
 }

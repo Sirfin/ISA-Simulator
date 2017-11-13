@@ -11,6 +11,12 @@ public class Load extends PipelineStage {
     public Load(Processor p){
         super(p) ;
     }
+
+    @Override
+    public String GetStringFormatOfPipelineStage() {
+        return null;
+    }
+
     @Override
     public void OnTick() {
     Command c = Buffer.pop() ;
