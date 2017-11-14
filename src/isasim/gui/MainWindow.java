@@ -1,6 +1,7 @@
 package isasim.gui;
 
 import isasim.main.Processor;
+import isasim.physical.Memory;
 import javafx.scene.paint.Stop;
 
 import javax.naming.ldap.Control;
@@ -19,6 +20,9 @@ public class MainWindow extends JFrame {
     public JButton ROM_B = new JButton("Show ROM") ;
     public JPanel ControlPanel = new JPanel() ;
     public JPanel PipelinePanel = new JPanel() ;
+    public MemoryTableWindow RamWindow  ;
+    public MemoryTableWindow RomWindow ;
+    public RegisterTableWindow RegisterWindow ;
     private JTable PipeTable  ;
     private DefaultTableModel dtm ;
     /**
@@ -65,13 +69,13 @@ public class MainWindow extends JFrame {
 
     public void initListener(){
         Register_B.addActionListener(e -> {
-                new RegisterTableWindow(this);
+                RegisterWindow = new RegisterTableWindow(this);
         });
         RAM_B.addActionListener(e -> {
-            new MemoryTableWindow(this,processor.ram);
+            RamWindow = new MemoryTableWindow(this,processor.ram);
         });
         ROM_B.addActionListener(e -> {
-            new MemoryTableWindow(this,processor.rom);
+            RomWindow  = new MemoryTableWindow(this,processor.rom);
         });
 
     }
@@ -93,10 +97,22 @@ public class MainWindow extends JFrame {
         initListener() ;
         this.UpdatePipeline();
     }
+    int a = 1 ;
     public void UpdatePipeline(){
-        this.dtm.setValueAt(processor.getExec().GetStringFormatOfPipelineStage(),3,1);
-        this.dtm.setValueAt(processor.getMWB().GetStringFormatOfPipelineStage(),4,1);
+        System.out.println("Updated table");
+        a++ ;
+        if (processor != null){
+            this.dtm.setValueAt(processor.getFetch().GetStringFormatOfPipelineStage(),0,1);
+            this.dtm.setValueAt(processor.getDecode().GetStringFormatOfPipelineStage(),1,1);
+            this.dtm.setValueAt(processor.getLoad().GetStringFormatOfPipelineStage(),2,1);
+            this.dtm.setValueAt(processor.getExec().GetStringFormatOfPipelineStage(),3,1);
+            this.dtm.setValueAt(processor.getMWB().GetStringFormatOfPipelineStage(),4,1);
+        }
 
+        if (this.RomWindow != null) this.RomWindow.UpdateTable();
+        if (this.RamWindow != null) this.RamWindow.UpdateTable();
+        if (this.RegisterWindow != null) this.RegisterWindow.UpdateTable();
+        this.PipeTable.setModel(dtm);
 
     }
 }

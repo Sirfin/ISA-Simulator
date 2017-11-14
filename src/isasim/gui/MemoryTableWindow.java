@@ -55,4 +55,11 @@ public class MemoryTableWindow extends JFrame {
         JScrollPane scrollPane = new JScrollPane(MemoryTable) ;
         this.TablePanel.add(scrollPane) ;
     }
+    public void UpdateTable(){
+        ArrayList<BitSet> MemoryValues = memory.getMemory() ;
+        for (int c = 0 ; c < MemoryValues.size() ; c++){
+            BitSet r = MemoryValues.get(c) ;
+            dtmMemory.setValueAt("0x"+String.format("%05X", BitSetHelper.BitSetToInt(r) & 0xFFFFF),c,1);
+        }
+    }
 }

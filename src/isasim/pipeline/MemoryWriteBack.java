@@ -13,8 +13,10 @@ public class MemoryWriteBack extends PipelineStage {
     }
     @Override
     public void OnTick() {
-        Tuple<RegisterAddress,Integer> toSave = Buffer.pop() ;
-        if (toSave != null)  p.Registerbank.get(toSave.x.m_Address).save(toSave.y);
+        if (Buffer.size() > 0) {
+            Tuple<RegisterAddress, Integer> toSave = Buffer.pop();
+            if (toSave != null) p.Registerbank.get(toSave.x.m_Address).save(toSave.y);
+        }
     }
     public void SendToBuffer(Tuple<RegisterAddress,Integer> a){
         Buffer.addLast(a);

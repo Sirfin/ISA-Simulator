@@ -6,6 +6,8 @@ import isasim.physical.Register;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.LinkedList;
 
 
@@ -51,5 +53,13 @@ public class RegisterTableWindow extends JFrame {
         }
         JScrollPane scrollPane = new JScrollPane(RegisterTable) ;
         this.TablePanel.add(scrollPane) ;
+    }
+    public void UpdateTable(){
+        java.util.List<Register> registers = mainWindow.processor.Registerbank ;
+        System.out.println(registers.size());
+        for (int c = 0 ; c < registers.size() ; c++){
+            Register r = registers.get(c) ;
+            dtmRegister.setValueAt("0x"+String.format("%05X", BitSetHelper.BitSetToInt(r.getMemory()) & 0xFFFFF),c,1);
+        }
     }
 }

@@ -5,10 +5,9 @@ import isasim.commands.Command;
 import isasim.gui.MainWindow;
 import isasim.helper.BitSetHelper;
 import isasim.physical.Memory;
+import isasim.physical.ProgramCounter;
 import isasim.physical.Register;
-import isasim.pipeline.Execute;
-import isasim.pipeline.Load;
-import isasim.pipeline.MemoryWriteBack;
+import isasim.pipeline.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,25 +15,36 @@ import java.util.List;
 public class Processor {
     public  int REGISTER_COUNT = 32 ;
     public  int  REGISTER_SIZE = 32 ;
+    public int RAM_SIZE_WORDS = 1000 ;
+    public int ROM_SIZE_WORDS = 1000 ;
     private MainWindow mw ;
     public List<Register> Registerbank = new ArrayList<Register>() ;
     private MemoryWriteBack MWB = new MemoryWriteBack(this) ;
     private Execute exec = new Execute(this) ;
     private Load load = new Load(this) ;
+    private Fetch fetch = new Fetch(this) ;
+    private Decode decode = new Decode(this) ;
+    private Ticker ticker ;
     public Memory rom ;
     public Memory ram ;
+    public ProgramCounter PC = new ProgramCounter(this) ;
     public Processor(MainWindow m){
         initRegister();
         initMemory();
-
         this.mw = m ;
-        Test();
+        ticker = new Ticker(this) ;
+        new Thread(ticker).start();
     }
 
     public void OnTick(){
-        load.OnTick();
-        exec.OnTick();
         MWB.OnTick();
+        exec.OnTick();
+        load.OnTick();
+        decode.OnTick();
+        fetch.OnTick();
+        PC.increment();
+        mw.UpdatePipeline();
+
     }
 
     public void Test(){
@@ -53,8 +63,8 @@ public class Processor {
         }
     }
     private void initMemory(){
-        rom = new Memory(16) ;
-        ram = new Memory(256);
+        rom = new Memory(ROM_SIZE_WORDS) ;
+        ram = new Memory(RAM_SIZE_WORDS);
     }
 
     public MemoryWriteBack getMWB() {
@@ -64,5 +74,7 @@ public class Processor {
     public Execute getExec() {
         return exec;
     }
-
+    public Load getLoad(){return load;}
+    public Fetch getFetch(){return fetch;}
+    public Decode getDecode(){return decode;}
 }

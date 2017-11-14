@@ -40,8 +40,10 @@ public class Execute extends PipelineStage {
 
     @Override
     public void OnTick() {
-        Command c = Buffer.pop() ;
-        if (c != null) c.execute(p);
+        if (Buffer.size() > 0 ) {
+            Command c = Buffer.pop();
+            c.execute(p);
+        }
         System.out.println(Buffer);
     }
     public void SendToBuffer(Command a){
