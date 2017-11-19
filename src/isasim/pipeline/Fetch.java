@@ -11,12 +11,11 @@ public class Fetch extends PipelineStage {
 
     @Override
     public String GetStringFormatOfPipelineStage() {
-        return null;
+        return Integer.toString(p.PC.getCount()) ;
     }
 
     @Override
     public void OnTick() {
-    //p.getDecode().SendToBuffer(p.rom.load(p.PC.getCount()));
-
+    p.getDecode().SendToBuffer(p.rom.load(p.PC.getCount()));
     }
 }

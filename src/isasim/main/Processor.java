@@ -1,9 +1,9 @@
 package isasim.main;
 
-import isasim.commands.AddCommand;
+import isasim.commands.rcommands.AddCommand;
 import isasim.commands.Command;
 import isasim.gui.MainWindow;
-import isasim.helper.BitSetHelper;
+import isasim.physical.Flags;
 import isasim.physical.Memory;
 import isasim.physical.ProgramCounter;
 import isasim.physical.Register;
@@ -28,12 +28,30 @@ public class Processor {
     public Memory rom ;
     public Memory ram ;
     public ProgramCounter PC = new ProgramCounter(this) ;
+
+    public Flags flags = new Flags() ;
+
+    public Flags getFlags(){
+        return flags ;
+    }
+
+
+    public void setFlags(int value , boolean Overflow, boolean Underflow){
+        flags.setC(Underflow);
+        flags.setO(Overflow);
+        flags.setN(value < 0 ) ;
+        flags.setZ(value == 0);
+    }
+
+
     public Processor(MainWindow m){
         initRegister();
         initMemory();
         this.mw = m ;
         ticker = new Ticker(this) ;
         new Thread(ticker).start();
+        Registerbank.get(0).save(8);
+        Registerbank.get(1).save(10);
     }
 
     public void OnTick(){
@@ -44,13 +62,12 @@ public class Processor {
         fetch.OnTick();
         PC.increment();
         mw.UpdatePipeline();
-
     }
 
     public void Test(){
         Registerbank.get(0).save(8);
         Registerbank.get(1).save(10);
-        Command a = new AddCommand(Registerbank.get(0),Registerbank.get(1),Registerbank.get(2)) ;
+        Command a = new AddCommand(Registerbank.get(0),Registerbank.get(1),Registerbank.get(2),false) ;
         load.SendToBuffer(a);
         load.OnTick();
         exec.OnTick();

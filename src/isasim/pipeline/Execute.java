@@ -1,9 +1,8 @@
 package isasim.pipeline;
 
-import isasim.commands.AddCommand;
 import isasim.commands.Command;
-import isasim.commands.RCommand;
-import isasim.helper.Tuple;
+import isasim.commands.rcommands.MoveCommand;
+import isasim.commands.rcommands.RCommand;
 import isasim.main.Processor;
 import isasim.physical.RegisterAddress;
 
@@ -26,13 +25,23 @@ public class Execute extends PipelineStage {
         Command c = Buffer.get(0) ;
         NameOfCommand = c.getName() ;
         if (c instanceof RCommand) {
-            int ra1;
-            int ra2;
-            RegisterAddress ra3;
-            ra1 = ((RCommand) c).getValue1();
-            ra2 = ((RCommand) c).getValue2();
-            ra3 = ((RCommand) c).getZiel().getAddress();
-            Parameter = " "+String.valueOf(ra1) + " " + String.valueOf(ra2) + " R" + String.valueOf(ra3.m_Address) ;
+            if (c instanceof MoveCommand) {
+                int ra1;
+                RegisterAddress ra2;
+                RegisterAddress ra3;
+                ra1 = ((RCommand) c).getValue1();
+                ra2 = ((RCommand) c).getQuelle2().getAddress();
+                ra3 = ((RCommand) c).getZiel().getAddress();
+                Parameter = " " + String.valueOf(ra1) + " R" + String.valueOf(ra2.m_Address) ;
+            }else{
+                int ra1;
+                int ra2;
+                RegisterAddress ra3;
+                ra1 = ((RCommand) c).getValue1();
+                ra2 = ((RCommand) c).getValue2();
+                ra3 = ((RCommand) c).getZiel().getAddress();
+                Parameter = " " + String.valueOf(ra1) + " " + String.valueOf(ra2) + " R" + String.valueOf(ra3.m_Address);
+            }
         }
         returnValue = NameOfCommand + Parameter ;
         return returnValue ;

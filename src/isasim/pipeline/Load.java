@@ -1,7 +1,7 @@
 package isasim.pipeline;
 
 import isasim.commands.Command;
-import isasim.commands.RCommand;
+import isasim.commands.rcommands.RCommand;
 import isasim.main.Processor;
 import isasim.physical.RegisterAddress;
 

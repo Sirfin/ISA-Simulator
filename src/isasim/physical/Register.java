@@ -6,12 +6,12 @@ import isasim.helper.BitSetHelper;
 import java.util.BitSet;
 
 public class Register {
-    private BitSet memory ;
+    private Integer memory ;
 
     private RegisterAddress address ;
-    public Register(int size,int adress){
-        memory = new BitSet(size) ;
-        this.address = new RegisterAddress(adress) ;
+    public Register(int size,int address){
+        memory = 0 ;
+        this.address = new RegisterAddress(address) ;
     }
 
     public RegisterAddress getAddress() {
@@ -20,13 +20,13 @@ public class Register {
 
 
     public void save(int ToSave){
-        this.memory = BitSet.valueOf(new long[]{ToSave}) ;
+        this.memory = ToSave ;
     }
     public int load(){
-        return BitSetHelper.BitSetToInt(this.memory) ;
+        return this.memory;
     }
 
-    public BitSet getMemory(){
+    public int getMemory(){
         return memory ;
     }
 

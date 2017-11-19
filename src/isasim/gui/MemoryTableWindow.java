@@ -47,19 +47,19 @@ public class MemoryTableWindow extends JFrame {
         };
         this.dtmMemory.setColumnIdentifiers(columnNames);
         this.MemoryTable.setModel(dtmMemory);
-        ArrayList<BitSet> MemoryValues = memory.getMemory() ;
+        ArrayList<Integer> MemoryValues = memory.getMemory() ;
         for (int c = 0 ; c < MemoryValues.size() ; c++){
-            BitSet r = MemoryValues.get(c) ;
-            dtmMemory.addRow(new Object[]{"0x" + String.format("%05X",c), "0x"+String.format("%05X", BitSetHelper.BitSetToInt(r) & 0xFFFFF)});
+            int r = MemoryValues.get(c) ;
+            dtmMemory.addRow(new Object[]{"0x" + String.format("%05X",c), "0x"+String.format("%05X", r & 0xFFFFF)});
         }
         JScrollPane scrollPane = new JScrollPane(MemoryTable) ;
         this.TablePanel.add(scrollPane) ;
     }
     public void UpdateTable(){
-        ArrayList<BitSet> MemoryValues = memory.getMemory() ;
+        ArrayList<Integer> MemoryValues = memory.getMemory() ;
         for (int c = 0 ; c < MemoryValues.size() ; c++){
-            BitSet r = MemoryValues.get(c) ;
-            dtmMemory.setValueAt("0x"+String.format("%05X", BitSetHelper.BitSetToInt(r) & 0xFFFFF),c,1);
+            int r = MemoryValues.get(c) ;
+            dtmMemory.setValueAt("0x"+String.format("%05X",r & 0xFFFFF),c,1);
         }
     }
 }

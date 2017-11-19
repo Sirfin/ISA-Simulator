@@ -1,5 +1,6 @@
-package isasim.commands;
+package isasim.commands.rcommands;
 
+import isasim.commands.Command;
 import isasim.main.Processor;
 import isasim.physical.Register;
 
@@ -37,5 +38,7 @@ public abstract class RCommand extends Command {
         this.Quelle2 = q2 ;
         this.Ziel = z ;
     }
-    public abstract void execute(Processor main) ;
+    public void execute(Processor main){
+
+    }
 }
