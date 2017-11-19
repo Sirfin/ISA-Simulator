@@ -34,7 +34,9 @@ public class Processor {
     public Flags getFlags(){
         return flags ;
     }
-
+    public void setFrequency(int frequency){
+        ticker.setFrequency(frequency);
+    }
 
     public void setFlags(int value , boolean Overflow, boolean Underflow){
         flags.setC(Underflow);

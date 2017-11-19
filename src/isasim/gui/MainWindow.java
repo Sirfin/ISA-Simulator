@@ -6,6 +6,8 @@ import javafx.scene.paint.Stop;
 
 import javax.naming.ldap.Control;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -20,9 +22,11 @@ public class MainWindow extends JFrame {
     public JButton ROM_B = new JButton("Show ROM") ;
     public JPanel ControlPanel = new JPanel() ;
     public JPanel PipelinePanel = new JPanel() ;
+    public JLabel frequency_label = new JLabel("") ;
     public MemoryTableWindow RamWindow  ;
     public MemoryTableWindow RomWindow ;
     public RegisterTableWindow RegisterWindow ;
+    public JSlider frequency_slider ;
     private JTable PipeTable  ;
     private DefaultTableModel dtm ;
     /**
@@ -36,6 +40,21 @@ public class MainWindow extends JFrame {
         ControlPanel.add(Register_B) ;
         ControlPanel.add(RAM_B) ;
         ControlPanel.add(ROM_B) ;
+        ControlPanel.add(frequency_label) ;
+        frequency_slider = new JSlider(JSlider.HORIZONTAL,0,3000,3000) ;
+        frequency_slider.setPaintTicks(true);
+        frequency_slider.setMajorTickSpacing( 10 );
+        frequency_slider.setMinorTickSpacing( 2 );
+        frequency_slider.setPaintTrack( false );
+        frequency_slider.addChangeListener( new ChangeListener() {
+            @Override public void stateChanged( ChangeEvent e ) {
+                processor.setFrequency(((JSlider) e.getSource()).getValue());
+                frequency_label.setText("Frequency: " +String.format("%.5f",1f/ ((((JSlider) e.getSource()).getValue())/1000f)) + " hz");
+            }
+        } );
+
+        ControlPanel.add(frequency_slider) ;
+        frequency_label.setText("Frequency: " +String.format("%.5f",(1f/ (((frequency_slider.getValue())/1000f)))) + " hz");
         this.add(ControlPanel,BorderLayout.NORTH);
     }
     private void InitPipelineDrawing(){
@@ -89,6 +108,10 @@ public class MainWindow extends JFrame {
         PipelinePanel.setBackground(Color.white);
         InitPipelineDrawing();
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE) ;
+
+
+
+
         //Finally, set the size of the window, and pop it up
         this.setSize(1200, 400);
         //Set the background-color of the window.

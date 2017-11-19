@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="54a1fd3d-77fa-4980-8603-91c76a60debf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/AddCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/AddCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/AndCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/AndCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/OrCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/OrCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/SHARCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/SHARCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/SHLCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/SHLCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/SHRCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/SHRCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/SubCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/SubCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/commands/rcommands/XOrCommand.java" afterPath="$PROJECT_DIR$/src/isasim/commands/rcommands/XOrCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/gui/MainWindow.java" afterPath="$PROJECT_DIR$/src/isasim/gui/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/main/Processor.java" afterPath="$PROJECT_DIR$/src/isasim/main/Processor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/main/Ticker.java" afterPath="$PROJECT_DIR$/src/isasim/main/Ticker.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,31 +21,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AddCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/isasim/commands/rcommands/AddCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="16" column="27" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="16" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OrCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/isasim/commands/rcommands/OrCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/isasim/commands/rcommands/AndCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="17" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -100,7 +75,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XOrCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="XOrCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/isasim/commands/rcommands/XOrCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="193">
@@ -120,11 +95,39 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/isasim/commands/rcommands/RCommand.java">
+      <file leaf-file-name="Ticker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/isasim/main/Ticker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
+            <state relative-caret-position="289">
+              <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+              <folding>
+                <element signature="e#239#240#0" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/isasim/main/Processor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#602#612#0" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1180#1181#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/isasim/gui/MainWindow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="56" column="123" lean-forward="false" selection-start-line="56" selection-start-column="123" selection-end-line="56" selection-end-column="123" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -174,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/isasim/pipeline/Load.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/RCommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/pipeline/MemoryWriteBack.java" />
-        <option value="$PROJECT_DIR$/src/isasim/gui/MainWindow.java" />
         <option value="$PROJECT_DIR$/src/isasim/physical/Memory.java" />
         <option value="$PROJECT_DIR$/src/isasim/physical/Register.java" />
         <option value="$PROJECT_DIR$/src/isasim/gui/MemoryTableWindow.java" />
@@ -187,9 +189,7 @@
         <option value="$PROJECT_DIR$/src/isasim/commands/Command.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/RCommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/physical/Flags.java" />
-        <option value="$PROJECT_DIR$/src/isasim/main/Processor.java" />
         <option value="$PROJECT_DIR$/src/isasim/pipeline/Decode.java" />
-        <option value="$PROJECT_DIR$/src/isasim/main/Ticker.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/AddCommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/AndCommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/OrCommand.java" />
@@ -198,6 +198,9 @@
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/SHRCommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/SubCommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/XOrCommand.java" />
+        <option value="$PROJECT_DIR$/src/isasim/main/Ticker.java" />
+        <option value="$PROJECT_DIR$/src/isasim/main/Processor.java" />
+        <option value="$PROJECT_DIR$/src/isasim/gui/MainWindow.java" />
       </list>
     </option>
   </component>
@@ -838,7 +841,7 @@
       <workItem from="1510574250535" duration="8162000" />
       <workItem from="1511090054828" duration="5443000" />
       <workItem from="1511095528628" duration="592000" />
-      <workItem from="1511100202384" duration="744000" />
+      <workItem from="1511100202384" duration="1780000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1510430046212</created>
@@ -861,11 +864,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511095449743</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed Naming">
+      <created>1511101009224</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1511101009224</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23843000" />
+    <option name="totallyTimeSpent" value="24879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -913,7 +923,8 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Added rest of pipeline Stages, Not yet Implemented just the stubs" />
     <MESSAGE value="Added Flag Handling, and added all R-Commands" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Flag Handling, and added all R-Commands" />
+    <MESSAGE value="fixed Naming" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed Naming" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -943,8 +954,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#602#612#0" expanded="true" />
-            <element signature="e#1060#1061#0" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -999,8 +1010,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#602#612#0" expanded="true" />
-            <element signature="e#1060#1061#0" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1043,7 +1054,7 @@
         <state relative-caret-position="135">
           <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1155,16 +1166,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/isasim/gui/MainWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/isasim/pipeline/MemoryWriteBack.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1257,31 +1258,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/isasim/main/Processor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="40" column="29" lean-forward="true" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#602#612#0" expanded="true" />
-            <element signature="e#1060#1061#0" expanded="true" />
-            <element signature="e#1089#1090#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/isasim/pipeline/Decode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="26" column="6" lean-forward="false" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/isasim/main/Ticker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="32" lean-forward="false" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1291,7 +1271,7 @@
         <state relative-caret-position="544">
           <caret line="40" column="40" lean-forward="false" selection-start-line="40" selection-start-column="40" selection-end-line="40" selection-end-column="40" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1369,6 +1349,40 @@
         <state relative-caret-position="193">
           <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/isasim/main/Ticker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+          <folding>
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/isasim/main/Processor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#602#612#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/isasim/gui/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="56" column="123" lean-forward="false" selection-start-line="56" selection-start-column="123" selection-end-line="56" selection-end-column="123" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -2,9 +2,13 @@ package isasim.main;
 
 public class Ticker implements Runnable{
     Processor proc ;
+    int frequency = 3000;
     public Ticker(Processor proc){
         super() ;
         this.proc = proc ;
+    }
+    public void setFrequency(int frequency){
+        this.frequency = frequency ;
     }
     @Override
     public void run() {
@@ -12,7 +16,7 @@ public class Ticker implements Runnable{
 
             System.out.println("Tick");
             try {
-                Thread.sleep(3000);
+                Thread.sleep(frequency);
             } catch (final InterruptedException e) {
                 e.printStackTrace();
             }
