@@ -13,7 +13,9 @@ public class SHARCommand extends RCommand{
 
     @Override
     public String getName() {
-        return "Add" ;
+        if (setFlags)
+            return "Sharf" ;
+        return "Shar" ;
     }
 
     @Override

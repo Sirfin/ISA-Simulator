@@ -13,7 +13,9 @@ public class AndCommand extends RCommand{
 
     @Override
     public String getName() {
-        return "Add" ;
+        if (setFlags)
+            return "Andf" ;
+        return "And" ;
     }
 
     @Override

@@ -13,7 +13,9 @@ public class XOrCommand extends RCommand{
 
     @Override
     public String getName() {
-        return "Add" ;
+        if (setFlags)
+            return "Xorf" ;
+        return "Xor" ;
     }
 
     @Override

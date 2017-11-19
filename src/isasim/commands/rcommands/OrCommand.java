@@ -13,7 +13,9 @@ public class OrCommand extends RCommand{
 
     @Override
     public String getName() {
-        return "Add" ;
+        if (setFlags)
+            return "Orf" ;
+        return "Or" ;
     }
 
     @Override

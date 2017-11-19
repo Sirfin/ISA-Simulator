@@ -13,6 +13,8 @@ public class AddCommand extends RCommand{
 
     @Override
     public String getName() {
+        if (setFlags)
+            return "Addf" ;
         return "Add" ;
     }
 

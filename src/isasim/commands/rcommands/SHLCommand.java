@@ -12,8 +12,10 @@ public class SHLCommand extends RCommand{
     }
 
     @Override
-    public String getName() {
-        return "Add" ;
+    public String getName(){
+        if (setFlags)
+            return "Shlf" ;
+        return "Shl" ;
     }
 
     @Override

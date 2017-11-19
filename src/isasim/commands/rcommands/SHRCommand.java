@@ -13,7 +13,9 @@ public class SHRCommand extends RCommand{
 
     @Override
     public String getName() {
-        return "Add" ;
+        if (setFlags)
+            return "Shrf" ;
+        return "Shr" ;
     }
 
     @Override

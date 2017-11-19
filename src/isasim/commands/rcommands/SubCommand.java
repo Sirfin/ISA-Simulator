@@ -13,6 +13,8 @@ public class SubCommand extends RCommand{
 
     @Override
     public String getName() {
+        if (setFlags)
+            return "Subf" ;
         return "Sub" ;
     }
 
