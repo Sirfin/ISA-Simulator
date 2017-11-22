@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54a1fd3d-77fa-4980-8603-91c76a60debf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/AddICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/AndICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/ICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/MoveICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/OrICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/SHARICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/SHLICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/SHRICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/SubICommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/XOrICommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/LoadCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/isasim/commands/icommands/StoreCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/pipeline/Decode.java" afterPath="$PROJECT_DIR$/src/isasim/pipeline/Decode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/pipeline/Execute.java" afterPath="$PROJECT_DIR$/src/isasim/pipeline/Execute.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/isasim/pipeline/Load.java" afterPath="$PROJECT_DIR$/src/isasim/pipeline/Load.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,36 +21,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AndICommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/AndICommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="18" column="20" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MoveICommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/MoveICommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ICommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/ICommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SHARCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/isasim/commands/rcommands/SHARCommand.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -111,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SHRICommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SHRICommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/SHRICommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
@@ -121,11 +81,45 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddICommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/AddICommand.java">
+      <file leaf-file-name="Processor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/isasim/main/Processor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+            <state relative-caret-position="323">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#1180#1181#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoadCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/LoadCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StoreCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/StoreCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="21" column="76" lean-forward="false" selection-start-line="21" selection-start-column="76" selection-end-line="21" selection-end-column="76" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Decode.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/isasim/pipeline/Decode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="30" column="52" lean-forward="false" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -151,8 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/isasim/main/Prozessor.java" />
-        <option value="$PROJECT_DIR$/src/isasim/helper/Tupel.java" />
         <option value="$PROJECT_DIR$/src/isasim/helper/Tuple.java" />
         <option value="$PROJECT_DIR$/src/isasim/physical/RegisterAdress.java" />
         <option value="$PROJECT_DIR$/src/isasim/physical/MemoryWriteBack.java" />
@@ -189,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/isasim/commands/icommands/ICommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/pipeline/Load.java" />
         <option value="$PROJECT_DIR$/src/isasim/pipeline/Execute.java" />
-        <option value="$PROJECT_DIR$/src/isasim/pipeline/Decode.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/rcommands/OrICommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/icommands/OrICommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/icommands/MoveICommand.java" />
@@ -202,6 +193,9 @@
         <option value="$PROJECT_DIR$/src/isasim/commands/icommands/SHRICommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/icommands/XOrICommand.java" />
         <option value="$PROJECT_DIR$/src/isasim/commands/icommands/SubICommand.java" />
+        <option value="$PROJECT_DIR$/src/isasim/commands/icommands/LoadCommand.java" />
+        <option value="$PROJECT_DIR$/src/isasim/commands/icommands/StoreCommand.java" />
+        <option value="$PROJECT_DIR$/src/isasim/pipeline/Decode.java" />
       </list>
     </option>
   </component>
@@ -374,6 +368,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="commands" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISA-Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ISA-Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="isasim" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commands" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icommands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -821,7 +841,7 @@
       <workItem from="1511090054828" duration="5443000" />
       <workItem from="1511095528628" duration="592000" />
       <workItem from="1511100202384" duration="2419000" />
-      <workItem from="1511344721648" duration="1277000" />
+      <workItem from="1511344721648" duration="2052000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Commit">
       <created>1510430046212</created>
@@ -858,11 +878,18 @@
       <option name="project" value="LOCAL" />
       <updated>1511102035849</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added I Commands">
+      <created>1511346029225</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1511346029225</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26795000" />
+    <option name="totallyTimeSpent" value="27570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -912,7 +939,8 @@
     <MESSAGE value="Added Flag Handling, and added all R-Commands" />
     <MESSAGE value="fixed Naming" />
     <MESSAGE value="Added Frequency Slider." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Frequency Slider." />
+    <MESSAGE value="Added I Commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added I Commands" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -925,26 +953,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/isasim/commands/rcommands/RCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/isasim/pipeline/Load.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/isasim/physical/Registerbank.java" />
     <entry file="file://$PROJECT_DIR$/src/isasim/main/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/isasim/helper/FixedSizeBits.java" />
@@ -988,6 +996,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,7 +1038,7 @@
         <state relative-caret-position="487">
           <caret line="47" column="49" lean-forward="true" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1046,6 +1055,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="5" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="e#115#116#0" expanded="false" />
+            <element signature="e#139#140#0" expanded="false" />
+            <element signature="e#174#175#0" expanded="false" />
+            <element signature="e#195#196#0" expanded="false" />
+            <element signature="e#223#224#0" expanded="false" />
+            <element signature="e#247#248#0" expanded="false" />
+            <element signature="e#282#283#0" expanded="false" />
+            <element signature="e#303#304#0" expanded="false" />
+            <element signature="e#331#332#0" expanded="false" />
+            <element signature="e#355#356#0" expanded="false" />
+            <element signature="e#390#391#0" expanded="false" />
+            <element signature="e#411#412#0" expanded="false" />
+            <element signature="e#439#440#0" expanded="false" />
+            <element signature="e#463#464#0" expanded="false" />
+            <element signature="e#498#499#0" expanded="false" />
+            <element signature="e#519#520#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1081,8 +1108,8 @@
           <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#323#324#0" expanded="true" />
-            <element signature="e#354#355#0" expanded="true" />
+            <element signature="e#323#324#0" expanded="false" />
+            <element signature="e#354#355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1135,18 +1162,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/isasim/main/Processor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="37" column="37" lean-forward="false" selection-start-line="37" selection-start-column="37" selection-end-line="37" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1134#1135#0" expanded="true" />
-            <element signature="e#1180#1181#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/isasim/gui/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -1168,7 +1183,7 @@
         <state relative-caret-position="683">
           <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1178,8 +1193,8 @@
         <state relative-caret-position="204">
           <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
           <folding>
-            <element signature="e#347#348#0" expanded="true" />
-            <element signature="e#414#415#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="false" />
+            <element signature="e#414#415#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1198,14 +1213,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-11">
           <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/isasim/pipeline/Decode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="26" column="83" lean-forward="false" selection-start-line="26" selection-start-column="83" selection-end-line="26" selection-end-column="83" />
           <folding />
         </state>
       </provider>
@@ -1294,6 +1301,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/isasim/main/Processor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1180#1181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/LoadCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="20" column="41" lean-forward="true" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/isasim/commands/icommands/StoreCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="76" lean-forward="false" selection-start-line="21" selection-start-column="76" selection-end-line="21" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/isasim/pipeline/Decode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="30" column="52" lean-forward="false" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="52" />
           <folding />
         </state>
       </provider>
