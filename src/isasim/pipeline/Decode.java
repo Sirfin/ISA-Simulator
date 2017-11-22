@@ -21,9 +21,7 @@ public class Decode extends PipelineStage {
         return Buffer.size()>0 ? Integer.toString(Buffer.get(0)) : "NOOP" ;
     }
     private Command decodeCommand(int Command){
-
-
-
+        //todo
         TestInt++ ;
         if (TestInt % 2 == 0 ) {
             return new LoadCommand(p.Registerbank.get(0), 15, p.Registerbank.get(10));

@@ -35,7 +35,12 @@ public class Flags {
     public void setO(boolean o) {
         O = o;
     }
-
+    public void clear(){
+        N = false ;
+        Z = false ;
+        C = false ;
+        O = false ;
+    }
     boolean N ;
     boolean Z ;
     boolean C ;

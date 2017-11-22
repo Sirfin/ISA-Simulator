@@ -39,6 +39,10 @@ public class Processor {
     }
 
     public void setFlags(int value , boolean Overflow, boolean Underflow){
+
+        flags.clear();
+
+
         flags.setC(Underflow);
         flags.setO(Overflow);
         flags.setN(value < 0 ) ;
