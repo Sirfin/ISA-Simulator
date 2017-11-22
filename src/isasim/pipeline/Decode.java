@@ -1,5 +1,6 @@
 package isasim.pipeline;
 
+import isasim.commands.icommands.AddICommand;
 import isasim.commands.rcommands.AddCommand;
 import isasim.commands.Command;
 import isasim.commands.rcommands.MoveCommand;
@@ -23,7 +24,7 @@ public class Decode extends PipelineStage {
 
         TestInt++ ;
         if (TestInt % 2 == 0 ) {
-            return new AddCommand(p.Registerbank.get(0), p.Registerbank.get(1), p.Registerbank.get(2),false);
+            return new AddICommand(p.Registerbank.get(0), 20, p.Registerbank.get(10),false);
         }
         return new MoveCommand(p.Registerbank.get(2), p.Registerbank.get(3), p.Registerbank.get(0));
     }
