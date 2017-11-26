@@ -1,5 +1,6 @@
 package isasim.main;
 
+import isasim.commands.CommandDecoder;
 import isasim.gui.MainWindow;
 
 import javax.swing.*;

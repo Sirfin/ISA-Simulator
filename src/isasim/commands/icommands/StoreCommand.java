@@ -20,6 +20,5 @@ public class StoreCommand extends ICommand{
     @Override
     public void execute(Processor main) {
         main.ram.store(this.getZiel().load()+this.getValue2(),this.getValue1());
-        //main.getMWB().SendToBuffer(new Tuple<RegisterAddress,Integer>(Ziel.getAddress(),sum));
     }
 }

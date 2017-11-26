@@ -6,9 +6,7 @@ import isasim.physical.Register;
 
 public abstract class JCommand extends Command {
     public abstract String getName() ;
-    public enum Condition {
-        eq,ne,cs,cc,mi,pl,vs,vc,hi,ls,ge,lt,gt,le,al
-    }
+
 
     public Register getBasis() {
         return Basis;

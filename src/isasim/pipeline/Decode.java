@@ -1,8 +1,10 @@
 package isasim.pipeline;
 
+import isasim.commands.CommandDecoder;
 import isasim.commands.icommands.AddICommand;
 import isasim.commands.icommands.LoadCommand;
 import isasim.commands.icommands.StoreCommand;
+import isasim.commands.jcommands.Condition;
 import isasim.commands.jcommands.JCommand;
 import isasim.commands.jcommands.JumpCommand;
 import isasim.commands.rcommands.AddCommand;
@@ -28,7 +30,7 @@ public class Decode extends PipelineStage {
         if (TestInt % 2 == 0 ) {
             return new LoadCommand(p.Registerbank.get(0), 15, p.Registerbank.get(10));
         }
-        return new JumpCommand(p.Registerbank.get(15),200, JCommand.Condition.al) ;
+        return new JumpCommand(p.Registerbank.get(15),200, Condition.al) ;
     }
 
 
@@ -37,6 +39,7 @@ public class Decode extends PipelineStage {
     public void OnTick() {
         if (Buffer.size() > 0 ) {
             p.getLoad().SendToBuffer(decodeCommand(Buffer.pop()));
+            //p.getLoad().SendToBuffer(CommandDecoder.decodeCommand(Buffer.pop(),p)); //TODO
         }
     }
     public void SendToBuffer(int a){

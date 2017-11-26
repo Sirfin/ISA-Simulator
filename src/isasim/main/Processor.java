@@ -1,5 +1,7 @@
 package isasim.main;
 
+import isasim.commands.CommandDecoder;
+import isasim.commands.jcommands.Condition;
 import isasim.commands.jcommands.JCommand;
 import isasim.commands.rcommands.AddCommand;
 import isasim.commands.Command;
@@ -49,7 +51,7 @@ public class Processor {
         flags.setN(value < 0 ) ;
         flags.setZ(value == 0);
     }
-    public boolean ConditionCheck(JCommand.Condition c){
+    public boolean ConditionCheck(Condition c){
         boolean returnValue = false ;
         switch (c){
 
@@ -105,6 +107,7 @@ public class Processor {
     public Processor(MainWindow m){
         initRegister();
         initMemory();
+        TestDecode() ;
         this.mw = m ;
         ticker = new Ticker(this) ;
         new Thread(ticker).start();
@@ -120,6 +123,13 @@ public class Processor {
         fetch.OnTick();
         PC.increment();
         mw.UpdatePipeline();
+    }
+
+    public void TestDecode(){
+        System.out.println(CommandDecoder.decodeCommand(0b00001000001000100001100010000000,this));
+        System.out.println(CommandDecoder.decodeCommand(0b01000101000001000011011000000000,this));
+        System.out.println(CommandDecoder.decodeCommand(0b01000001000001000011011000000000,this));
+        System.out.println(CommandDecoder.decodeCommand(0b10000001000110011000000000000000,this));
     }
 
     public void Test(){
