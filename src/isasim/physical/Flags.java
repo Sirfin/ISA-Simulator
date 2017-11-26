@@ -28,23 +28,23 @@ public class Flags {
         C = c;
     }
 
-    public boolean isO() {
-        return O;
+    public boolean isV() {
+        return V;
     }
 
-    public void setO(boolean o) {
-        O = o;
+    public void setV(boolean v) {
+        V = v;
     }
     public void clear(){
         N = false ;
         Z = false ;
         C = false ;
-        O = false ;
+        V = false ;
     }
     boolean N ;
     boolean Z ;
     boolean C ;
-    boolean O ;
+    boolean V;
 
     public Flags() {
     }

@@ -9,13 +9,20 @@ public class ProgramCounter {
         value = 0 ;
     }
     private int value ;
+    private boolean overwridden = false ;
     public int getCount(){
         return value ;
     }
     public void setCount(int count){
+
         value = count ;
+        overwridden = true ;
     }
     public void increment(){
+        if (overwridden){
+            overwridden = false ;
+            return ;
+        }
         value++ ;
         if (value >= processor.ROM_SIZE_WORDS){
             value = 0;

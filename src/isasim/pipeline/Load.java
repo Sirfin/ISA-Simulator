@@ -2,6 +2,7 @@ package isasim.pipeline;
 
 import isasim.commands.Command;
 import isasim.commands.icommands.ICommand;
+import isasim.commands.jcommands.JCommand;
 import isasim.commands.rcommands.RCommand;
 import isasim.main.Processor;
 import isasim.physical.RegisterAddress;
@@ -42,6 +43,15 @@ public class Load extends PipelineStage {
             ra3 = ((ICommand) c).getZiel().getAddress();
             Parameter = " R"+String.valueOf(ra1.m_Address) + " " + String.valueOf(ra2) + " R" + String.valueOf(ra3.m_Address) ;
         }
+
+        if (c instanceof JCommand) {
+            RegisterAddress ra1;
+            int ra2;
+            ra1 = ((JCommand) c).getBasis().getAddress();
+            ra2 = ((JCommand) c).getOffset() ;
+            Parameter = " R"+String.valueOf(ra1.m_Address) + " " + String.valueOf(ra2) ;
+        }
+
         returnValue = NameOfCommand + Parameter ;
         return returnValue ;
 
@@ -59,6 +69,9 @@ public class Load extends PipelineStage {
             }
             if (c instanceof ICommand){
                 ((ICommand) c).setValue1(((ICommand) c).getQuelle1().load());
+            }
+            if(c instanceof JCommand){
+                ((JCommand) c).setBasis_loaded(((JCommand) c).getBasis().load());
             }
             p.getExec().SendToBuffer(c);
         }

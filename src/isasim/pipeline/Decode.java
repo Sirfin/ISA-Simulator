@@ -3,6 +3,8 @@ package isasim.pipeline;
 import isasim.commands.icommands.AddICommand;
 import isasim.commands.icommands.LoadCommand;
 import isasim.commands.icommands.StoreCommand;
+import isasim.commands.jcommands.JCommand;
+import isasim.commands.jcommands.JumpCommand;
 import isasim.commands.rcommands.AddCommand;
 import isasim.commands.Command;
 import isasim.commands.rcommands.MoveCommand;
@@ -26,7 +28,7 @@ public class Decode extends PipelineStage {
         if (TestInt % 2 == 0 ) {
             return new LoadCommand(p.Registerbank.get(0), 15, p.Registerbank.get(10));
         }
-        return new StoreCommand(p.Registerbank.get(1), 15, p.Registerbank.get(0));
+        return new JumpCommand(p.Registerbank.get(15),200, JCommand.Condition.al) ;
     }
 
 

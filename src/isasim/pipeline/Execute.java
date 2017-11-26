@@ -2,6 +2,7 @@ package isasim.pipeline;
 
 import isasim.commands.Command;
 import isasim.commands.icommands.ICommand;
+import isasim.commands.jcommands.JCommand;
 import isasim.commands.rcommands.MoveCommand;
 import isasim.commands.rcommands.RCommand;
 import isasim.main.Processor;
@@ -53,6 +54,15 @@ public class Execute extends PipelineStage {
                 ra3 = ((ICommand) c).getZiel().getAddress();
                 Parameter = " " + String.valueOf(ra1) + " " + String.valueOf(ra2) + " R" + String.valueOf(ra3.m_Address);
         }
+
+        if (c instanceof JCommand) {
+            int ra1;
+            int ra2;
+            ra1 = ((JCommand) c).getBasis_loaded() ;
+            ra2 = ((JCommand) c).getOffset() ;
+            Parameter = String.valueOf(ra1+ra2) ;
+        }
+
 
 
 

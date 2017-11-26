@@ -1,5 +1,6 @@
 package isasim.main;
 
+import isasim.commands.jcommands.JCommand;
 import isasim.commands.rcommands.AddCommand;
 import isasim.commands.Command;
 import isasim.gui.MainWindow;
@@ -44,11 +45,62 @@ public class Processor {
 
 
         flags.setC(Underflow);
-        flags.setO(Overflow);
+        flags.setV(Overflow);
         flags.setN(value < 0 ) ;
         flags.setZ(value == 0);
     }
+    public boolean ConditionCheck(JCommand.Condition c){
+        boolean returnValue = false ;
+        switch (c){
 
+            case eq:
+                returnValue = flags.isZ() ;
+                break;
+            case ne:
+                returnValue = !flags.isZ() ;
+                break;
+            case cs:
+                returnValue = flags.isC() ;
+                break;
+            case cc:
+                returnValue = !flags.isC() ;
+                break;
+            case mi:
+                returnValue = flags.isN() ;
+                break;
+            case pl:
+                returnValue = !flags.isN() ;
+                break;
+            case vs:
+                returnValue = flags.isV() ;
+                break;
+            case vc:
+                returnValue = !flags.isV() ;
+                break;
+            case hi:
+                returnValue = (flags.isV() == true)&&(flags.isZ() == false) ;
+                break;
+            case ls:
+                returnValue = 	(flags.isC()==false) || (flags.isZ()==true) ;
+                break;
+            case ge:
+                returnValue = (flags.isN()==flags.isV()) ;
+                break;
+            case lt:
+                returnValue = (flags.isN()!=flags.isV()) ;
+                break;
+            case gt:
+                returnValue = (flags.isZ()==false) && (flags.isN()==flags.isV()) ;
+                break;
+            case le:
+                returnValue = (flags.isZ()==true) && (flags.isN()!=flags.isV()) ;
+                break;
+            case al:
+                returnValue = true ;
+                break;
+        }
+        return returnValue ;
+    }
 
     public Processor(MainWindow m){
         initRegister();
@@ -77,7 +129,6 @@ public class Processor {
         load.SendToBuffer(a);
         load.OnTick();
         exec.OnTick();
-        //MWB.On
         System.out.println(Integer.toHexString(Registerbank.get(2).load()));
     }
     private void initRegister(){
