@@ -22,7 +22,7 @@ public class RomLoader {
         try {
             data = Files.readAllBytes(path) ;
 
-            for (int i = 0 ; i < data.length-15;i+=4){
+            for (int i = 0 ; i < data.length;i+=4){
                 //System.out.println(i) ;
                 //System.out.println("Länge = " + data.length);
                 byte[] Int = new byte[4] ;
@@ -31,7 +31,7 @@ public class RomLoader {
                 Int[2] = data[i+2] ;
                 Int[3] = data[i+3] ;
                 int a = byteArrayToLeInt(Int) ;
-                main.rom.store(offset+i,a);
+                main.rom.store(offset+(i/4),a);
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -123,10 +123,8 @@ public class Processor {
     }
 
     public void TestDecode(){
-        System.out.println(CommandDecoder.decodeCommand(0b00001000001000100001100010000000,this));
-        System.out.println(CommandDecoder.decodeCommand(0b01000101000001000011011000000000,this));
-        System.out.println(CommandDecoder.decodeCommand(0b01000001000001000011011000000000,this));
-        System.out.println(CommandDecoder.decodeCommand(0b10000001000110011000000000000000,this));
+        System.out.println(CommandDecoder.decodeCommand(0b01010000001000000000000000000000,this));
+        System.out.println(CommandDecoder.decodeCommand(0b01001100000000100000000000000000,this));
     }
 
     public void Test(){

@@ -44,14 +44,12 @@ public class Decode extends PipelineStage {
     public void OnTick() {
         if (Buffer.size() > 0 ) {
             p.getLoad().SendToBuffer(decodeCommand(Buffer.pop()));
-
-
-            Command c = CommandDecoder.decodeCommand(Buffer.pop(),p) ;
+            /*Command c = CommandDecoder.decodeCommand(Buffer.pop(),p) ;
             if (c == null){
                 JOptionPane.showMessageDialog(new JFrame(), "Unrecognized Command in Decode", "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
-            p.getLoad().SendToBuffer(c); //TODO
+            p.getLoad().SendToBuffer(c); //TODO*/
         }
     }
     public void SendToBuffer(int a){

@@ -61,7 +61,6 @@ public final class CommandDecoder {
         int opCode_Without_Command_Type;
         Class[] cArg;
         opCode_Without_Command_Type = (Code << 2) >>> 28;
-
         switch (CommandType) {
             case 0: //R Format
                 //Get the three Register Numbers
@@ -128,8 +127,8 @@ public final class CommandDecoder {
                 RegisterNumber2 = (Code << 11) >>> 27;
                 AluFunction = (Code << 16) >>> 28;
                 int Immediate = (Code << 20) >>> 20;
-                opCode_Without_Command_Type = (Opcode << 4) >>> 4;
 
+                System.out.println("OpcodeWithout: " + opCode_Without_Command_Type) ;
                 switch (opCode_Without_Command_Type) {
                     case 0: //movi Command
                         return new MoveICommand(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2));
@@ -179,7 +178,7 @@ public final class CommandDecoder {
                     case 3: // load
                         return new LoadCommand(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2));
                     case 4: // store
-                        return new LoadCommand(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2));
+                        return new StoreCommand(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2));
                 }
                 break;
             case 2:  //J Format
