@@ -22,8 +22,17 @@ public class Decode extends PipelineStage {
     int TestInt = 0 ;
     @Override
     public String GetStringFormatOfPipelineStage() {
-        return Buffer.size()>0 ? Integer.toString(Buffer.get(0)) : "NOOP" ;
+
+
+
+
+
+        return Buffer.size()>0 ? Integer.toBinaryString(Buffer.get(0)) : "NOOP" ;
     }
+
+
+
+
     private Command decodeCommand(int Command){
         //todo
         TestInt++ ;

@@ -2,6 +2,7 @@ package isasim.gui;
 
 import isasim.main.Processor;
 import isasim.physical.Memory;
+import isasim.physical.RomLoader;
 import javafx.scene.paint.Stop;
 
 import javax.naming.ldap.Control;
@@ -119,6 +120,7 @@ public class MainWindow extends JFrame {
         this.setVisible(true);
         initListener() ;
         this.UpdatePipeline();
+        RomLoader.FileInRom("assembler",processor,0);
     }
     int a = 1 ;
     public void UpdatePipeline(){

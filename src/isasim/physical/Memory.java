@@ -20,6 +20,8 @@ public class Memory {
         return memory.get(Address) ;
     }
     public void store(int Address,int value){
-        memory.set(Address,value) ;
+        if (memory.size() > Address) {
+            memory.set(Address, value);
+        }
     }
 }
