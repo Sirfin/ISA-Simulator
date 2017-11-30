@@ -24,7 +24,11 @@ public class Execute extends PipelineStage {
         if (Buffer.size() == 0){
             return "NOOP" ;
         }
+
         Command c = Buffer.get(0) ;
+        if (c == null){
+            return "NOOP" ;
+        }
         NameOfCommand = c.getName() ;
         if (c instanceof RCommand) {
             if (c instanceof MoveCommand) {

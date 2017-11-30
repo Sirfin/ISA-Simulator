@@ -12,6 +12,7 @@ import isasim.commands.Command;
 import isasim.commands.rcommands.MoveCommand;
 import isasim.main.Processor;
 
+import javax.swing.*;
 import java.util.LinkedList;
 
 public class Decode extends PipelineStage {
@@ -22,11 +23,6 @@ public class Decode extends PipelineStage {
     int TestInt = 0 ;
     @Override
     public String GetStringFormatOfPipelineStage() {
-
-
-
-
-
         return Buffer.size()>0 ? Integer.toBinaryString(Buffer.get(0)) : "NOOP" ;
     }
 
@@ -48,7 +44,14 @@ public class Decode extends PipelineStage {
     public void OnTick() {
         if (Buffer.size() > 0 ) {
             p.getLoad().SendToBuffer(decodeCommand(Buffer.pop()));
-            //p.getLoad().SendToBuffer(CommandDecoder.decodeCommand(Buffer.pop(),p)); //TODO
+
+
+            Command c = CommandDecoder.decodeCommand(Buffer.pop(),p) ;
+            if (c == null){
+                JOptionPane.showMessageDialog(new JFrame(), "Unrecognized Command in Decode", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            p.getLoad().SendToBuffer(c); //TODO
         }
     }
     public void SendToBuffer(int a){

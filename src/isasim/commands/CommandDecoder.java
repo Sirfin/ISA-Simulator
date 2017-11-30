@@ -61,8 +61,7 @@ public final class CommandDecoder {
         int opCode_Without_Command_Type;
         Class[] cArg;
         opCode_Without_Command_Type = (Code << 2) >>> 28;
-        System.out.println("opCode : " + Integer.toBinaryString(Opcode));
-        System.out.println("opCode Without Command : " + Integer.toBinaryString(opCode_Without_Command_Type)) ;
+
         switch (CommandType) {
             case 0: //R Format
                 //Get the three Register Numbers
@@ -71,10 +70,7 @@ public final class CommandDecoder {
                 RegisterNumber3 = (Code << 16) >>> 27;
                 AluFunction = (Code << 21) >>> 28;
                 //opCode_Without_Command_Type = (Opcode << 4) >>> 4;
-                System.out.println("R1 " + RegisterNumber1) ;
-                System.out.println("R2 " + RegisterNumber2) ;
-                System.out.println("R3 " + RegisterNumber3) ;
-                System.out.println("AluFunction " + AluFunction) ;
+
 
                 switch (opCode_Without_Command_Type) {
                     case 0: //halt Command
@@ -88,6 +84,9 @@ public final class CommandDecoder {
                         cArg[1] = Register.class; //Second argument is of *object* type String
                         cArg[2] = Register.class; //Third argument is of *primitive* type int
                         cArg[3] = Boolean.class;
+                        if(AluRFunctionMap.get(AluFunction) == null){
+                            return null ;
+                        }
                         try {
                             return AluRFunctionMap.get(AluFunction).getDeclaredConstructor(cArg).newInstance(p.Registerbank.get(RegisterNumber1), p.Registerbank.get(RegisterNumber2), p.Registerbank.get(RegisterNumber3), false);
                         } catch (InstantiationException e) {
@@ -106,6 +105,9 @@ public final class CommandDecoder {
                         cArg[1] = Register.class;
                         cArg[2] = Register.class;
                         cArg[3] = Boolean.class;
+                        if(AluRFunctionMap.get(AluFunction) == null){
+                            return null ;
+                        }
                         try { // get the corresponding Class from the Map.
                             return AluRFunctionMap.get(AluFunction).getDeclaredConstructor(cArg).newInstance(p.Registerbank.get(RegisterNumber1), p.Registerbank.get(RegisterNumber2), p.Registerbank.get(RegisterNumber3), true);
                         } catch (InstantiationException e) {
@@ -127,10 +129,7 @@ public final class CommandDecoder {
                 AluFunction = (Code << 16) >>> 28;
                 int Immediate = (Code << 20) >>> 20;
                 opCode_Without_Command_Type = (Opcode << 4) >>> 4;
-                System.out.println("R1 " + RegisterNumber1) ;
-                System.out.println("R2 " + RegisterNumber2) ;
-                System.out.println("Immediate " + Immediate) ;
-                System.out.println("AluFunction " + AluFunction) ;
+
                 switch (opCode_Without_Command_Type) {
                     case 0: //movi Command
                         return new MoveICommand(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2));
@@ -140,6 +139,9 @@ public final class CommandDecoder {
                         cArg[1] = int.class;
                         cArg[2] = Register.class;
                         cArg[3] = Boolean.class;
+                        if(AluIFunctionMap.get(AluFunction) == null){
+                            return null ;
+                        }
                         try { // get the corresponding Class from the Map.
                             return AluIFunctionMap.get(AluFunction).getDeclaredConstructor(cArg).newInstance(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2), false);
                         } catch (InstantiationException e) {
@@ -158,6 +160,9 @@ public final class CommandDecoder {
                         cArg[1] = int.class;
                         cArg[2] = Register.class;
                         cArg[3] = Boolean.class;
+                        if(AluIFunctionMap.get(AluFunction) == null){
+                            return null ;
+                        }
                         try { // get the corresponding Class from the Map.
                             return AluIFunctionMap.get(AluFunction).getDeclaredConstructor(cArg).newInstance(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2), true);
                         } catch (InstantiationException e) {
@@ -181,10 +186,9 @@ public final class CommandDecoder {
                 Condition condtion = Condition.getConditionFromCode((Code << 6) >>> 28);
                 RegisterNumber1 = (Code << 10) >>> 27;
                 int offset = (Code << 15) >>> 15;
-                System.out.println("R1 " + RegisterNumber1) ;
-                System.out.println("offset " + offset) ;
-                System.out.println("condition " + condtion) ;
-
+                if (condtion == null){
+                    return null ;
+                }
                 switch (opCode_Without_Command_Type) {
                     case 0: //relative Sprung
                         return new JumpRCommand(p.Registerbank.get(RegisterNumber1),offset,condtion) ;

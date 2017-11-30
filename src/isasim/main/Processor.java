@@ -20,7 +20,7 @@ public class Processor {
     public  int  REGISTER_SIZE = 32 ;
     public int RAM_SIZE_WORDS = 1000 ;
     public int ROM_SIZE_WORDS = 1000 ;
-    private MainWindow mw ;
+    public MainWindow mw ;
     public List<Register> Registerbank = new ArrayList<Register>() ;
     private MemoryWriteBack MWB = new MemoryWriteBack(this) ;
     private Execute exec = new Execute(this) ;

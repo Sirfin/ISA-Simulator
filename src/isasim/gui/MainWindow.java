@@ -12,6 +12,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
 public class MainWindow extends JFrame {
@@ -28,6 +29,8 @@ public class MainWindow extends JFrame {
     public MemoryTableWindow RomWindow ;
     public RegisterTableWindow RegisterWindow ;
     public JSlider frequency_slider ;
+    public JFileChooser Rom_Chooser = new JFileChooser() ;
+    public JButton file_Chooser = new JButton("Load File") ;
     private JTable PipeTable  ;
     private DefaultTableModel dtm ;
     /**
@@ -42,6 +45,7 @@ public class MainWindow extends JFrame {
         ControlPanel.add(RAM_B) ;
         ControlPanel.add(ROM_B) ;
         ControlPanel.add(frequency_label) ;
+        ControlPanel.add(file_Chooser) ;
         frequency_slider = new JSlider(JSlider.HORIZONTAL,0,3000,3000) ;
         frequency_slider.setPaintTicks(true);
         frequency_slider.setMajorTickSpacing( 10 );
@@ -92,25 +96,34 @@ public class MainWindow extends JFrame {
                 RegisterWindow = new RegisterTableWindow(this);
         });
         RAM_B.addActionListener(e -> {
-            RamWindow = new MemoryTableWindow(this,processor.ram);
+            RamWindow = new MemoryTableWindow(this,processor.ram,"RamWindow");
         });
         ROM_B.addActionListener(e -> {
-            RomWindow  = new MemoryTableWindow(this,processor.rom);
+            RomWindow  = new MemoryTableWindow(this,processor.rom,"RomWindow");
+        });
+        file_Chooser.addActionListener(e -> {
+            int returnVal = Rom_Chooser.showOpenDialog(this);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                File file = Rom_Chooser.getSelectedFile();
+                RomLoader.FileInRom(file.getAbsolutePath(),processor,0);
+
+            } else {
+                System.out.println("Open command cancelled by user." );
+            }
         });
 
     }
 
-    public MainWindow(){
-        super("MainWindow") ;
-        processor = new Processor(this) ;
+    public MainWindow() {
+        super("MainWindow");
+        processor = new Processor(this);
         this.setLayout(new BorderLayout());
-        this.add(PipelinePanel,BorderLayout.CENTER) ;
+        this.add(PipelinePanel, BorderLayout.CENTER);
         InitializeControlPanel();
         PipelinePanel.setBackground(Color.white);
         InitPipelineDrawing();
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE) ;
-
-
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 
         //Finally, set the size of the window, and pop it up
@@ -118,9 +131,8 @@ public class MainWindow extends JFrame {
         //Set the background-color of the window.
         this.setBackground(Color.white);
         this.setVisible(true);
-        initListener() ;
+        initListener();
         this.UpdatePipeline();
-        RomLoader.FileInRom("assembler",processor,0);
     }
     int a = 1 ;
     public void UpdatePipeline(){
@@ -134,8 +146,8 @@ public class MainWindow extends JFrame {
             this.dtm.setValueAt(processor.getMWB().GetStringFormatOfPipelineStage(),4,1);
         }
 
-        if (this.RomWindow != null) this.RomWindow.UpdateTable();
-        if (this.RamWindow != null) this.RamWindow.UpdateTable();
+        if (this.RomWindow != null) this.RomWindow.UpdateTable(MemoryTableWindow.Format.Command,processor);
+        if (this.RamWindow != null) this.RamWindow.UpdateTable(MemoryTableWindow.Format.Hex,processor);
         if (this.RegisterWindow != null) this.RegisterWindow.UpdateTable();
         this.PipeTable.setModel(dtm);
 

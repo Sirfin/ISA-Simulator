@@ -22,9 +22,9 @@ public class RomLoader {
         try {
             data = Files.readAllBytes(path) ;
 
-            for (int i = 0 ; i < data.length+1;i+=4){
-                System.out.println(i) ;
-                System.out.println("Länge = " + data.length);
+            for (int i = 0 ; i < data.length-15;i+=4){
+                //System.out.println(i) ;
+                //System.out.println("Länge = " + data.length);
                 byte[] Int = new byte[4] ;
                 Int[0] = data[i] ;
                 Int[1] = data[i+1] ;

@@ -24,6 +24,9 @@ public class Load extends PipelineStage {
             return "NOOP" ;
         }
         Command c = Buffer.get(0) ;
+        if (c == null){
+            return "NOOP" ;
+        }
         NameOfCommand = c.getName() ;
         if (c instanceof RCommand) {
             RegisterAddress ra1;
