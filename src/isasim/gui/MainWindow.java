@@ -22,6 +22,8 @@ public class MainWindow extends JFrame {
     public JButton Register_B = new JButton("Show register") ;
     public JButton RAM_B = new JButton("Show RAM") ;
     public JButton ROM_B = new JButton("Show ROM") ;
+    public JButton START_B = new JButton("Start") ;
+    public JButton STOP_B = new JButton("Stop") ;
     public JPanel ControlPanel = new JPanel() ;
     public JPanel PipelinePanel = new JPanel() ;
     public JLabel frequency_label = new JLabel("") ;
@@ -44,6 +46,8 @@ public class MainWindow extends JFrame {
         ControlPanel.add(Register_B) ;
         ControlPanel.add(RAM_B) ;
         ControlPanel.add(ROM_B) ;
+        ControlPanel.add(START_B) ;
+        ControlPanel.add(STOP_B) ;
         ControlPanel.add(frequency_label) ;
         ControlPanel.add(file_Chooser) ;
         frequency_slider = new JSlider(JSlider.HORIZONTAL,0,3000,3000) ;
@@ -97,9 +101,17 @@ public class MainWindow extends JFrame {
         });
         RAM_B.addActionListener(e -> {
             RamWindow = new MemoryTableWindow(this,processor.ram,"RamWindow");
+            this.UpdatePipeline();
         });
         ROM_B.addActionListener(e -> {
             RomWindow  = new MemoryTableWindow(this,processor.rom,"RomWindow");
+            this.UpdatePipeline();
+        });
+        START_B.addActionListener(e -> {
+            processor.Continue();
+        });
+        STOP_B.addActionListener(e -> {
+            processor.Halt();
         });
         file_Chooser.addActionListener(e -> {
             int returnVal = Rom_Chooser.showOpenDialog(this);
@@ -107,6 +119,7 @@ public class MainWindow extends JFrame {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = Rom_Chooser.getSelectedFile();
                 RomLoader.FileInRom(file.getAbsolutePath(),processor,0);
+                this.UpdatePipeline();
 
             } else {
                 System.out.println("Open command cancelled by user." );

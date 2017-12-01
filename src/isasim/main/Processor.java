@@ -112,6 +112,15 @@ public class Processor {
         Registerbank.get(1).save(10);
     }
 
+    public void Halt(){
+        ticker.stop();
+    }
+
+    public void Continue(){
+        ticker.start();
+        new Thread(ticker).start();
+    }
+
     public void OnTick(){
         MWB.OnTick();
         exec.OnTick();

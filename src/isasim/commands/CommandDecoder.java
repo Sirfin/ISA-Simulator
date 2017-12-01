@@ -61,6 +61,9 @@ public final class CommandDecoder {
         int opCode_Without_Command_Type;
         Class[] cArg;
         opCode_Without_Command_Type = (Code << 2) >>> 28;
+        if (Code == 0){
+            return new HaltCommand(p.Registerbank.get(0),p.Registerbank.get(0),p.Registerbank.get(0)) ;
+        }
         switch (CommandType) {
             case 0: //R Format
                 //Get the three Register Numbers
@@ -69,12 +72,9 @@ public final class CommandDecoder {
                 RegisterNumber3 = (Code << 16) >>> 27;
                 AluFunction = (Code << 21) >>> 28;
                 //opCode_Without_Command_Type = (Opcode << 4) >>> 4;
-
-
                 switch (opCode_Without_Command_Type) {
                     case 0: //halt Command
-                        //TODO
-                        break;
+                        return new HaltCommand(p.Registerbank.get(0),p.Registerbank.get(0),p.Registerbank.get(0)) ;
                     case 1:// mov
                         return new MoveCommand(p.Registerbank.get(RegisterNumber1), p.Registerbank.get(RegisterNumber2), p.Registerbank.get(RegisterNumber3));
                     case 2: // alu without setFlags
