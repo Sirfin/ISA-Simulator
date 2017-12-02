@@ -17,8 +17,6 @@ import java.io.IOException;
 
 public class MainWindow extends JFrame {
     public Processor processor ;
-    public JButton Start_B = new JButton("Start") ;
-    public JButton Stop_B = new JButton("Stop") ;
     public JButton Register_B = new JButton("Show register") ;
     public JButton RAM_B = new JButton("Show RAM") ;
     public JButton ROM_B = new JButton("Show ROM") ;
@@ -27,6 +25,7 @@ public class MainWindow extends JFrame {
     public JPanel ControlPanel = new JPanel() ;
     public JPanel PipelinePanel = new JPanel() ;
     public JLabel frequency_label = new JLabel("") ;
+    public JLabel running_label = new JLabel("Stopped") ;
     public MemoryTableWindow RamWindow  ;
     public MemoryTableWindow RomWindow ;
     public RegisterTableWindow RegisterWindow ;
@@ -41,14 +40,13 @@ public class MainWindow extends JFrame {
     private void InitializeControlPanel(){
 
         ControlPanel.setLayout(new FlowLayout(FlowLayout.RIGHT,12,12));
-        ControlPanel.add(Start_B);
-        ControlPanel.add(Stop_B);
         ControlPanel.add(Register_B) ;
         ControlPanel.add(RAM_B) ;
         ControlPanel.add(ROM_B) ;
         ControlPanel.add(START_B) ;
         ControlPanel.add(STOP_B) ;
         ControlPanel.add(frequency_label) ;
+        ControlPanel.add(running_label);
         ControlPanel.add(file_Chooser) ;
         frequency_slider = new JSlider(JSlider.HORIZONTAL,0,3000,3000) ;
         frequency_slider.setPaintTicks(true);
@@ -163,6 +161,6 @@ public class MainWindow extends JFrame {
         if (this.RamWindow != null) this.RamWindow.UpdateTable(MemoryTableWindow.Format.Hex,processor);
         if (this.RegisterWindow != null) this.RegisterWindow.UpdateTable();
         this.PipeTable.setModel(dtm);
-
+        this.running_label.setText(Boolean.toString(processor.Running()));
     }
 }

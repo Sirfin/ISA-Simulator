@@ -21,12 +21,13 @@ public class Ticker implements Runnable{
     public void run() {
         while (!halted) {
             System.out.println("Tick");
+            proc.OnTick() ;
             try {
                 Thread.sleep(frequency);
             } catch (final InterruptedException e) {
                 e.printStackTrace();
             }
-            proc.OnTick();
+
         }
 
     }

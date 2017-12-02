@@ -30,4 +30,8 @@ public class MemoryWriteBack extends PipelineStage {
         }
         return "NOOP" ;
     }
+
+    public void flush(){
+        this.Buffer.clear();
+    }
 }

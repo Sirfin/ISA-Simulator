@@ -29,22 +29,13 @@ public class Decode extends PipelineStage {
 
 
 
-    private Command decodeCommand(int Command){
-        //todo
-        TestInt++ ;
-        if (TestInt % 2 == 0 ) {
-            return new LoadCommand(p.Registerbank.get(0), 15, p.Registerbank.get(10));
-        }
-        return new JumpCommand(p.Registerbank.get(15),200, Condition.al) ;
-    }
 
 
 
     @Override
     public void OnTick() {
         if (Buffer.size() > 0 ) {
-            p.getLoad().SendToBuffer(decodeCommand(Buffer.pop()));
-            /*Command c = CommandDecoder.decodeCommand(Buffer.pop(),p) ;
+            Command c = CommandDecoder.decodeCommand(Buffer.pop(),p) ;
             if (c == null){
                 JOptionPane.showMessageDialog(new JFrame(), "Unrecognized Command in Decode", "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -54,5 +45,8 @@ public class Decode extends PipelineStage {
     }
     public void SendToBuffer(int a){
         Buffer.addLast(a);
+    }
+    public void flush(){
+        this.Buffer.clear();
     }
 }

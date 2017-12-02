@@ -2,10 +2,15 @@ package isasim.gui;
 
 import isasim.commands.Command;
 import isasim.commands.CommandDecoder;
+import isasim.commands.icommands.ICommand;
+import isasim.commands.jcommands.JCommand;
+import isasim.commands.rcommands.MoveCommand;
+import isasim.commands.rcommands.RCommand;
 import isasim.helper.BitSetHelper;
 import isasim.main.Processor;
 import isasim.physical.Memory;
 import isasim.physical.Register;
+import isasim.physical.RegisterAddress;
 import isasim.pipeline.Decode;
 
 import javax.swing.*;
@@ -36,7 +41,7 @@ public class MemoryTableWindow extends JFrame {
         this.setLayout(new BorderLayout());
         this.add(TablePanel,BorderLayout.CENTER) ;
         TablePanel.setBackground(Color.white);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE) ;
+        //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE) ;
         SetupTable();
         //Finally, set the size of the window, and pop it up
         this.setSize(600, 800);
@@ -85,7 +90,7 @@ public class MemoryTableWindow extends JFrame {
                 case Command:
                     Command command = CommandDecoder.decodeCommand(r,main) ;
                     if (command != null) {
-                        dtmMemory.setValueAt(command.getName(), c, 1);
+                        dtmMemory.setValueAt(command.getName() , c, 1);
                     }else{
                         dtmMemory.setValueAt("NOOP", c, 1);
                     }

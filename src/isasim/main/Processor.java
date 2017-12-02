@@ -100,7 +100,12 @@ public class Processor {
         }
         return returnValue ;
     }
-
+    public void PipelineFlush(){
+    this.getDecode().flush();
+    this.getLoad().flush();
+    this.getExec().flush();
+    this.getMWB().flush();
+    }
     public Processor(MainWindow m){
         initRegister();
         initMemory();
@@ -113,12 +118,15 @@ public class Processor {
     }
 
     public void Halt(){
-        ticker.stop();
+
+            ticker.stop();
+            mw.UpdatePipeline();
     }
 
     public void Continue(){
         ticker.start();
         new Thread(ticker).start();
+        mw.UpdatePipeline();
     }
 
     public void OnTick(){
@@ -130,7 +138,9 @@ public class Processor {
         PC.increment();
         mw.UpdatePipeline();
     }
-
+    public boolean Running(){
+        return ticker.halted ;
+    }
     public void TestDecode(){
         System.out.println(CommandDecoder.decodeCommand(0b01010000001000000000000000000000,this));
         System.out.println(CommandDecoder.decodeCommand(0b01001100000000100000000000000000,this));

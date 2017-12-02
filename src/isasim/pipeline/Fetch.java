@@ -8,7 +8,6 @@ public class Fetch extends PipelineStage {
     public Fetch(Processor p){
         super(p) ;
     }
-
     @Override
     public String GetStringFormatOfPipelineStage() {
         return Integer.toString(p.PC.getCount()) ;

@@ -14,7 +14,9 @@ public class Load extends PipelineStage {
     public Load(Processor p){
         super(p) ;
     }
-
+    public void flush(){
+        this.Buffer.clear();
+    }
     @Override
     public String GetStringFormatOfPipelineStage() {
         String returnValue = "" ;
