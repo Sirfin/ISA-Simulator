@@ -15,6 +15,12 @@ import isasim.pipeline.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Die Klasse die veranwortlich dafür ist, alle Teile des Simulators zusammenzuführen.
+ * Im Rahmen der physischen Komponenten, wäre dies wohl das Steuerwerk.
+ * @author Fin Töter
+ *
+ */
 public class Processor {
     public  int REGISTER_COUNT = 32 ;
     public  int  REGISTER_SIZE = 32 ;
@@ -34,6 +40,11 @@ public class Processor {
 
     public Flags flags = new Flags() ;
 
+    /**
+     * Gibt eine Referenz auf die Flags des Prozessors zurück
+     * @see Flags
+     * @return flags
+     */
     public Flags getFlags(){
         return flags ;
     }
@@ -41,6 +52,12 @@ public class Processor {
         ticker.setFrequency(frequency);
     }
 
+    /**
+     * Übergibt dem Steuwerk Eigenschaften eines Wertes um die Flags zu setzen
+     * @param value Value to Check
+     * @param Overflow Overflow occured
+     * @param Underflow Underflow occured
+     */
     public void setFlags(int value , boolean Overflow, boolean Underflow){
         flags.clear();
         flags.setC(Underflow);
@@ -48,6 +65,14 @@ public class Processor {
         flags.setN(value < 0 ) ;
         flags.setZ(value == 0);
     }
+
+    /**
+     * Gibt zurück ob eine Condition bei den momentanen Flags true/false ist.
+     * @see Flags
+     * @see Condition
+     * @param c Condition to Check
+     * @return
+     */
     public boolean ConditionCheck(Condition c){
         boolean returnValue = false ;
         switch (c){
@@ -100,35 +125,55 @@ public class Processor {
         }
         return returnValue ;
     }
+
+    /**
+     * Flush the Pipeline
+     */
     public void PipelineFlush(){
     this.getDecode().flush();
     this.getLoad().flush();
     this.getExec().flush();
     this.getMWB().flush();
     }
+
+    /**
+     * Konstruktur mit Referenz zur Main GUI
+     * @param m Referenz zum Main Window
+     * @see MainWindow
+     */
     public Processor(MainWindow m){
         initRegister();
         initMemory();
-        TestDecode() ;
+        //TestDecode() ;
         this.mw = m ;
         ticker = new Ticker(this) ;
         new Thread(ticker).start();
-        Registerbank.get(0).save(8);
-        Registerbank.get(1).save(10);
     }
 
+    /**
+     * Stoppt den Prozessor
+     *
+     */
     public void Halt(){
 
             ticker.stop();
             mw.UpdatePipeline();
     }
 
+    /**
+     * Wenn der Prozessor gestoppt ist, wird er hier forgesetzt
+     */
     public void Continue(){
-        ticker.start();
-        new Thread(ticker).start();
-        mw.UpdatePipeline();
+        if (ticker.halted) {
+            ticker.start();
+            new Thread(ticker).start();
+            mw.UpdatePipeline();
+        }
     }
 
+    /**
+     * Tick für die Frequenz
+     */
     public void OnTick(){
         MWB.OnTick();
         exec.OnTick();
@@ -138,6 +183,11 @@ public class Processor {
         PC.increment();
         mw.UpdatePipeline();
     }
+
+    /**
+     * Gibt zurück ob der Prozessor momentan läuft oder gestoppt wurde.
+     * @return halted
+     */
     public boolean Running(){
         return ticker.halted ;
     }
@@ -155,24 +205,60 @@ public class Processor {
         exec.OnTick();
         System.out.println(Integer.toHexString(Registerbank.get(2).load()));
     }
+
+    /**
+     * Initialisiert die Register
+     */
     private void initRegister(){
         for (int i = 0 ; i< REGISTER_COUNT ; i++){
             Registerbank.add(new Register(REGISTER_SIZE,i)) ;
         }
     }
+
+    /**
+     * Initisalisiert ROM/RAM
+     */
     private void initMemory(){
         rom = new Memory(ROM_SIZE_WORDS) ;
         ram = new Memory(RAM_SIZE_WORDS);
     }
 
+    /**
+     * Gibt die Referenz auf die MWB Stage zurück.
+     * @see MemoryWriteBack
+     * @return MWB
+     */
     public MemoryWriteBack getMWB() {
         return MWB;
     }
 
+    /**
+     * Gibt die Referenz auf die Execute Stage zurück.
+     * @see Execute
+     * @return execute
+     */
     public Execute getExec() {
         return exec;
     }
+
+    /**
+     * Gibt die Referenz auf die Load Stage zurück.
+     * @see Load
+     * @return load
+     */
     public Load getLoad(){return load;}
+
+    /**
+     * Gibt die Referenz auf die Fetch Stage zurück.
+     * @see Fetch
+     * @return fetch
+     */
     public Fetch getFetch(){return fetch;}
+
+    /**
+     * Gibt die Referenz auf die Decode Stage zurück.
+     * @see Decode
+     * @return decode
+     */
     public Decode getDecode(){return decode;}
 }

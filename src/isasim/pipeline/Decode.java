@@ -26,12 +26,6 @@ public class Decode extends PipelineStage {
         return Buffer.size()>0 ? Integer.toBinaryString(Buffer.get(0)) : "NOOP" ;
     }
 
-
-
-
-
-
-
     @Override
     public void OnTick() {
         if (Buffer.size() > 0 ) {

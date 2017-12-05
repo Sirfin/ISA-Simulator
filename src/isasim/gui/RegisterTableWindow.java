@@ -49,7 +49,7 @@ public class RegisterTableWindow extends JFrame {
         java.util.List<Register> registers = mainWindow.processor.Registerbank ;
         for (int c = 0 ; c < registers.size() ; c++){
             Register r = registers.get(c) ;
-            dtmRegister.addRow(new Object[]{"0x" + String.format("%05X",r.getAddress().m_Address & 0xFFFFF),"0x" + String.format("%05X",r.getMemory() & 0xFFFFF)});
+            dtmRegister.addRow(new Object[]{"0x" + String.format("%05X",r.getAddress().m_Address & 0xFFFFF),"0x" + String.format("%05X",r.load() & 0xFFFFF)});
         }
         JScrollPane scrollPane = new JScrollPane(RegisterTable) ;
         this.TablePanel.add(scrollPane) ;
@@ -59,7 +59,7 @@ public class RegisterTableWindow extends JFrame {
         System.out.println(registers.size());
         for (int c = 0 ; c < registers.size() ; c++){
             Register r = registers.get(c) ;
-            dtmRegister.setValueAt("0x"+String.format("%05X", r.getMemory() & 0xFFFFF),c,1);
+            dtmRegister.setValueAt("0x"+String.format("%05X", r.load() & 0xFFFFF),c,1);
         }
     }
 }
