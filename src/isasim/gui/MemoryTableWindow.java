@@ -2,22 +2,13 @@ package isasim.gui;
 
 import isasim.commands.Command;
 import isasim.commands.CommandDecoder;
-import isasim.commands.icommands.ICommand;
-import isasim.commands.jcommands.JCommand;
-import isasim.commands.rcommands.MoveCommand;
-import isasim.commands.rcommands.RCommand;
-import isasim.helper.BitSetHelper;
 import isasim.main.Processor;
 import isasim.physical.Memory;
-import isasim.physical.Register;
-import isasim.physical.RegisterAddress;
-import isasim.pipeline.Decode;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.BitSet;
 
 public class MemoryTableWindow extends JFrame {
 
@@ -25,6 +16,7 @@ public class MemoryTableWindow extends JFrame {
         Hex,
         Binary,
         Command,
+        Decimal,
     }
 
 
@@ -79,7 +71,7 @@ public class MemoryTableWindow extends JFrame {
 
         for (int c = 0 ; c < MemoryValues.size() ; c++){
             int r = MemoryValues.get(c) ;
-            System.out.println(format.toString()) ;
+            //System.out.println(format.toString()) ;
             switch (format){
                 case Hex:
                     dtmMemory.setValueAt("0x"+String.format("%05X",r & 0xFFFFF),c,1);
@@ -94,6 +86,9 @@ public class MemoryTableWindow extends JFrame {
                     }else{
                         dtmMemory.setValueAt("NOOP", c, 1);
                     }
+                    break;
+                case Decimal:
+                    dtmMemory.setValueAt(r,c,1);
                     break;
 
             }

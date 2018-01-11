@@ -30,7 +30,7 @@ public class RomLoader {
 
         try {
             data = Files.readAllBytes(path) ;
-            if (data.length % 36 != 0){
+            if (data.length % 4 != 0){
                 JOptionPane.showMessageDialog(new JFrame(),
                         "Die Datei hat nicht das benötigte Format",
                         "File Error",

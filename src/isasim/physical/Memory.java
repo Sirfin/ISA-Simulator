@@ -22,6 +22,12 @@ public class Memory {
         }
     }
 
+    public void reset(){
+        for (int i = 0 ; i < this.memory.size() ; i++ ){
+            memory.set(i,0);
+        }
+    }
+
     /**
      * Gibt eine Referenz auf den Speicher zurück.
      * @return Referenz

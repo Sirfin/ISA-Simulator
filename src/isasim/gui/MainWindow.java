@@ -22,6 +22,7 @@ public class MainWindow extends JFrame {
     public JButton ROM_B = new JButton("Show ROM") ;
     public JButton START_B = new JButton("Start") ;
     public JButton STOP_B = new JButton("Stop") ;
+    public JButton RESET_B = new JButton("Reset") ;
     public JPanel ControlPanel = new JPanel() ;
     public JPanel PipelinePanel = new JPanel() ;
     public JLabel frequency_label = new JLabel("") ;
@@ -45,6 +46,7 @@ public class MainWindow extends JFrame {
         ControlPanel.add(ROM_B) ;
         ControlPanel.add(START_B) ;
         ControlPanel.add(STOP_B) ;
+        ControlPanel.add(RESET_B);
         ControlPanel.add(frequency_label) ;
         ControlPanel.add(running_label);
         ControlPanel.add(file_Chooser) ;
@@ -111,6 +113,9 @@ public class MainWindow extends JFrame {
         STOP_B.addActionListener(e -> {
             processor.Halt();
         });
+        RESET_B.addActionListener(e -> {
+            processor.Reset();
+        });
         file_Chooser.addActionListener(e -> {
             int returnVal = Rom_Chooser.showOpenDialog(this);
 
@@ -152,15 +157,14 @@ public class MainWindow extends JFrame {
         if (processor != null){
             this.dtm.setValueAt(processor.getFetch().GetStringFormatOfPipelineStage(),0,1);
             this.dtm.setValueAt(processor.getDecode().GetStringFormatOfPipelineStage(),1,1);
-            this.dtm.setValueAt(processor.getLoad().GetStringFormatOfPipelineStage(),2,1);
             this.dtm.setValueAt(processor.getExec().GetStringFormatOfPipelineStage(),3,1);
             this.dtm.setValueAt(processor.getMWB().GetStringFormatOfPipelineStage(),4,1);
         }
 
         if (this.RomWindow != null) this.RomWindow.UpdateTable(MemoryTableWindow.Format.Command,processor);
-        if (this.RamWindow != null) this.RamWindow.UpdateTable(MemoryTableWindow.Format.Hex,processor);
+        if (this.RamWindow != null) this.RamWindow.UpdateTable(MemoryTableWindow.Format.Decimal,processor);
         if (this.RegisterWindow != null) this.RegisterWindow.UpdateTable();
         this.PipeTable.setModel(dtm);
-        this.running_label.setText(Boolean.toString(processor.Running()));
+        this.running_label.setText(processor.Running()?"Halted":"Running");
     }
 }

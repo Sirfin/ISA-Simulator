@@ -59,6 +59,7 @@ public class RegisterTableWindow extends JFrame {
         System.out.println(registers.size());
         for (int c = 0 ; c < registers.size() ; c++){
             Register r = registers.get(c) ;
+            //dtmRegister.setValueAt(r.load(),c,1);
             dtmRegister.setValueAt("0x"+String.format("%05X", r.load() & 0xFFFFF),c,1);
         }
     }

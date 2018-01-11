@@ -2,7 +2,6 @@ package isasim.main;
 
 import isasim.commands.CommandDecoder;
 import isasim.commands.jcommands.Condition;
-import isasim.commands.jcommands.JCommand;
 import isasim.commands.rcommands.AddCommand;
 import isasim.commands.Command;
 import isasim.gui.MainWindow;
@@ -30,9 +29,8 @@ public class Processor {
     public List<Register> Registerbank = new ArrayList<Register>() ;
     private MemoryWriteBack MWB = new MemoryWriteBack(this) ;
     private Execute exec = new Execute(this) ;
-    private Load load = new Load(this) ;
     private Fetch fetch = new Fetch(this) ;
-    private Decode decode = new Decode(this) ;
+    private DecodeLoad decode = new DecodeLoad(this) ;
     private Ticker ticker ;
     public Memory rom ;
     public Memory ram ;
@@ -131,7 +129,6 @@ public class Processor {
      */
     public void PipelineFlush(){
     this.getDecode().flush();
-    this.getLoad().flush();
     this.getExec().flush();
     this.getMWB().flush();
     }
@@ -144,12 +141,22 @@ public class Processor {
     public Processor(MainWindow m){
         initRegister();
         initMemory();
-        //TestDecode() ;
         this.mw = m ;
         ticker = new Ticker(this) ;
         new Thread(ticker).start();
     }
+    public void Reset(){
+        this.Halt();
+        this.PipelineFlush();
+        ram.reset();
+        rom.reset();
+        PC.reset();
+        for (int i = 0 ; i < 32 ; i++){
+            Registerbank.get(i).save(0);
+        }
+        this.mw.UpdatePipeline();
 
+    }
     /**
      * Stoppt den Prozessor
      *
@@ -177,7 +184,6 @@ public class Processor {
     public void OnTick(){
         MWB.OnTick();
         exec.OnTick();
-        load.OnTick();
         decode.OnTick();
         fetch.OnTick();
         PC.increment();
@@ -200,8 +206,6 @@ public class Processor {
         Registerbank.get(0).save(8);
         Registerbank.get(1).save(10);
         Command a = new AddCommand(Registerbank.get(0),Registerbank.get(1),Registerbank.get(2),false) ;
-        load.SendToBuffer(a);
-        load.OnTick();
         exec.OnTick();
         System.out.println(Integer.toHexString(Registerbank.get(2).load()));
     }
@@ -241,12 +245,7 @@ public class Processor {
         return exec;
     }
 
-    /**
-     * Gibt die Referenz auf die Load Stage zurück.
-     * @see Load
-     * @return load
-     */
-    public Load getLoad(){return load;}
+
 
     /**
      * Gibt die Referenz auf die Fetch Stage zurück.
@@ -256,9 +255,9 @@ public class Processor {
     public Fetch getFetch(){return fetch;}
 
     /**
-     * Gibt die Referenz auf die Decode Stage zurück.
-     * @see Decode
+     * Gibt die Referenz auf die DecodeLoad Stage zurück.
+     * @see DecodeLoad
      * @return decode
      */
-    public Decode getDecode(){return decode;}
+    public DecodeLoad getDecode(){return decode;}
 }
