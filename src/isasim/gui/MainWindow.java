@@ -152,7 +152,6 @@ public class MainWindow extends JFrame {
     }
     int a = 1 ;
     public void UpdatePipeline(){
-        System.out.println("Updated table");
         a++ ;
         if (processor != null){
             this.dtm.setValueAt(processor.getFetch().GetStringFormatOfPipelineStage(),0,1);

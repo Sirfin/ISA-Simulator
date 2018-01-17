@@ -17,11 +17,12 @@ public class JumpRCommand extends JCommand {
     }
 
     @Override
-    public void execute(Processor Main){
+    public int execute(Processor Main){
         if (Main.ConditionCheck(c)){
             Main.PC.setCount(Main.PC.getCount() + this.basis_loaded + this.offset ) ;
             Main.PipelineFlush();
         }
+        return -1 ;
     }
 
 }

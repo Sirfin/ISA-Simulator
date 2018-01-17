@@ -13,7 +13,8 @@ public class HaltCommand extends RCommand {
     }
 
     @Override
-    public void execute(Processor main){
+    public int execute(Processor main){
         main.Halt();
+        return 0 ;
     }
 }

@@ -13,7 +13,6 @@ public abstract class ICommand extends Command {
     }
 
     Register Quelle1 ;
-    Register Ziel ;
 
     int Value1 ;
     int Value2 ;
@@ -23,8 +22,6 @@ public abstract class ICommand extends Command {
     public int getValue2(){
         return Value2;
     }
-    public Register getZiel(){
-        return Ziel;}
 
     public void setValue1(int value1) {
         Value1 = value1;
@@ -37,8 +34,8 @@ public abstract class ICommand extends Command {
     public ICommand(Register q1 , int immediate, Register z){
         this.Quelle1 = q1 ;
         this.Value2 = immediate ;
-        this.Ziel = z ;
+        this.setZiel(z);
     }
-    public void execute(Processor main){
-    }
+    @Override
+    public abstract int execute(Processor main) ;
 }

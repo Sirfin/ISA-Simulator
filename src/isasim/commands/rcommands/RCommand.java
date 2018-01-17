@@ -18,7 +18,6 @@ public abstract class RCommand extends Command {
 
     Register Quelle1 ;
     Register Quelle2 ;
-    Register Ziel ;
 
     public void setValue1(int value1) {
         Value1 = value1;
@@ -27,7 +26,6 @@ public abstract class RCommand extends Command {
     int Value1 ;
     public int getValue1(){return Value1;}
     public int getValue2(){return Value2;}
-    public Register getZiel(){return Ziel;}
     public void setValue2(int value2) {
         Value2 = value2;
     }
@@ -36,9 +34,8 @@ public abstract class RCommand extends Command {
     public RCommand(Register q1 , Register q2, Register z){
         this.Quelle1 = q1 ;
         this.Quelle2 = q2 ;
-        this.Ziel = z ;
+        this.setZiel(z);
     }
-    public void execute(Processor main){
-
-    }
+    @Override
+    public abstract int execute(Processor main) ;
 }

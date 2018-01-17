@@ -15,6 +15,7 @@ public class NoopCommand extends RCommand {
     }
 
     @Override
-    public void execute(Processor main) {
+    public int execute(Processor main) {
+        return 0 ;
     }
 }

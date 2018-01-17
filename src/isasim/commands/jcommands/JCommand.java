@@ -43,6 +43,6 @@ public abstract class JCommand extends Command {
 
         this.c = c ;
     }
-    public void execute(Processor main){
-    }
+    @Override
+    public abstract int execute(Processor main) ;
 }

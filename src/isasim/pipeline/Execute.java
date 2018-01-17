@@ -1,13 +1,19 @@
 package isasim.pipeline;
 
 import isasim.commands.Command;
+import isasim.commands.CommandType;
 import isasim.commands.icommands.ICommand;
+import isasim.commands.icommands.LoadCommand;
+import isasim.commands.icommands.MoveICommand;
+import isasim.commands.icommands.StoreCommand;
 import isasim.commands.jcommands.JCommand;
 import isasim.commands.rcommands.MoveCommand;
 import isasim.commands.rcommands.RCommand;
+import isasim.helper.Triple;
 import isasim.main.Processor;
 import isasim.physical.RegisterAddress;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.LinkedList;
 
 public class Execute extends PipelineStage {
@@ -76,7 +82,22 @@ public class Execute extends PipelineStage {
     public void OnTick() {
         if (Buffer.size() > 0 ) {
             Command c = Buffer.pop();
-            c.execute(p);
+            int output = c.execute(p);
+
+            if (c instanceof LoadCommand){
+                p.getMWB().SendToBuffer(new Triple<CommandType,RegisterAddress,Integer>(CommandType.LOAD,
+                        c.getZiel().getAddress(),output));
+                return ;
+            }
+            if (c instanceof StoreCommand){
+                p.getMWB().SendToBuffer(new Triple<CommandType,RegisterAddress,Integer>(CommandType.STORE,
+                        ((StoreCommand) c).getQuelle1().getAddress(),output));
+                return ;
+            }
+            p.getMWB().SendToBuffer(new Triple<CommandType,RegisterAddress,Integer>(CommandType.OTHER,
+                    c.getZiel().getAddress(),output));
+            return;
+
         }
     }
     public void SendToBuffer(Command a){

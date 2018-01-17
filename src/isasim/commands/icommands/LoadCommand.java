@@ -18,8 +18,9 @@ public class LoadCommand extends ICommand{
     }
 
     @Override
-    public void execute(Processor main) {
-        int sum = main.ram.load(this.getValue1()+this.getValue2()) ;
-        main.getMWB().SendToBuffer(new Tuple<RegisterAddress,Integer>(Ziel.getAddress(),sum));
+    public int execute(Processor main) {
+        int sum = this.getValue1()+this.getValue2() ;
+        //main.getMWB().SendToBuffer(new Tuple<RegisterAddress,Integer>(Ziel.getAddress(),sum));
+        return sum ;
     }
 }
