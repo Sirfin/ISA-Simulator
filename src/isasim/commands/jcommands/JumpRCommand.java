@@ -20,6 +20,7 @@ public class JumpRCommand extends JCommand {
     public void execute(Processor Main){
         if (Main.ConditionCheck(c)){
             Main.PC.setCount(Main.PC.getCount() + this.basis_loaded + this.offset ) ;
+            Main.PipelineFlush();
         }
     }
 

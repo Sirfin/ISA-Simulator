@@ -17,14 +17,16 @@ import java.io.IOException;
 
 public class MainWindow extends JFrame {
     public Processor processor ;
-    public JButton Start_B = new JButton("Start") ;
-    public JButton Stop_B = new JButton("Stop") ;
     public JButton Register_B = new JButton("Show register") ;
     public JButton RAM_B = new JButton("Show RAM") ;
     public JButton ROM_B = new JButton("Show ROM") ;
+    public JButton START_B = new JButton("Start") ;
+    public JButton STOP_B = new JButton("Stop") ;
+    public JButton RESET_B = new JButton("Reset") ;
     public JPanel ControlPanel = new JPanel() ;
     public JPanel PipelinePanel = new JPanel() ;
     public JLabel frequency_label = new JLabel("") ;
+    public JLabel running_label = new JLabel("Stopped") ;
     public MemoryTableWindow RamWindow  ;
     public MemoryTableWindow RomWindow ;
     public RegisterTableWindow RegisterWindow ;
@@ -39,12 +41,14 @@ public class MainWindow extends JFrame {
     private void InitializeControlPanel(){
 
         ControlPanel.setLayout(new FlowLayout(FlowLayout.RIGHT,12,12));
-        ControlPanel.add(Start_B);
-        ControlPanel.add(Stop_B);
         ControlPanel.add(Register_B) ;
         ControlPanel.add(RAM_B) ;
         ControlPanel.add(ROM_B) ;
+        ControlPanel.add(START_B) ;
+        ControlPanel.add(STOP_B) ;
+        ControlPanel.add(RESET_B);
         ControlPanel.add(frequency_label) ;
+        ControlPanel.add(running_label);
         ControlPanel.add(file_Chooser) ;
         frequency_slider = new JSlider(JSlider.HORIZONTAL,0,3000,3000) ;
         frequency_slider.setPaintTicks(true);
@@ -97,9 +101,20 @@ public class MainWindow extends JFrame {
         });
         RAM_B.addActionListener(e -> {
             RamWindow = new MemoryTableWindow(this,processor.ram,"RamWindow");
+            this.UpdatePipeline();
         });
         ROM_B.addActionListener(e -> {
             RomWindow  = new MemoryTableWindow(this,processor.rom,"RomWindow");
+            this.UpdatePipeline();
+        });
+        START_B.addActionListener(e -> {
+            processor.Continue();
+        });
+        STOP_B.addActionListener(e -> {
+            processor.Halt();
+        });
+        RESET_B.addActionListener(e -> {
+            processor.Reset();
         });
         file_Chooser.addActionListener(e -> {
             int returnVal = Rom_Chooser.showOpenDialog(this);
@@ -107,6 +122,7 @@ public class MainWindow extends JFrame {
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = Rom_Chooser.getSelectedFile();
                 RomLoader.FileInRom(file.getAbsolutePath(),processor,0);
+                this.UpdatePipeline();
 
             } else {
                 System.out.println("Open command cancelled by user." );
@@ -141,15 +157,14 @@ public class MainWindow extends JFrame {
         if (processor != null){
             this.dtm.setValueAt(processor.getFetch().GetStringFormatOfPipelineStage(),0,1);
             this.dtm.setValueAt(processor.getDecode().GetStringFormatOfPipelineStage(),1,1);
-            this.dtm.setValueAt(processor.getLoad().GetStringFormatOfPipelineStage(),2,1);
             this.dtm.setValueAt(processor.getExec().GetStringFormatOfPipelineStage(),3,1);
             this.dtm.setValueAt(processor.getMWB().GetStringFormatOfPipelineStage(),4,1);
         }
 
         if (this.RomWindow != null) this.RomWindow.UpdateTable(MemoryTableWindow.Format.Command,processor);
-        if (this.RamWindow != null) this.RamWindow.UpdateTable(MemoryTableWindow.Format.Hex,processor);
+        if (this.RamWindow != null) this.RamWindow.UpdateTable(MemoryTableWindow.Format.Decimal,processor);
         if (this.RegisterWindow != null) this.RegisterWindow.UpdateTable();
         this.PipeTable.setModel(dtm);
-
+        this.running_label.setText(processor.Running()?"Halted":"Running");
     }
 }

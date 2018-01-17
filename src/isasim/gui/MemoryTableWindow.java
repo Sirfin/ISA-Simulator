@@ -2,17 +2,13 @@ package isasim.gui;
 
 import isasim.commands.Command;
 import isasim.commands.CommandDecoder;
-import isasim.helper.BitSetHelper;
 import isasim.main.Processor;
 import isasim.physical.Memory;
-import isasim.physical.Register;
-import isasim.pipeline.Decode;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.BitSet;
 
 public class MemoryTableWindow extends JFrame {
 
@@ -20,6 +16,7 @@ public class MemoryTableWindow extends JFrame {
         Hex,
         Binary,
         Command,
+        Decimal,
     }
 
 
@@ -36,7 +33,7 @@ public class MemoryTableWindow extends JFrame {
         this.setLayout(new BorderLayout());
         this.add(TablePanel,BorderLayout.CENTER) ;
         TablePanel.setBackground(Color.white);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE) ;
+        //this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE) ;
         SetupTable();
         //Finally, set the size of the window, and pop it up
         this.setSize(600, 800);
@@ -74,7 +71,7 @@ public class MemoryTableWindow extends JFrame {
 
         for (int c = 0 ; c < MemoryValues.size() ; c++){
             int r = MemoryValues.get(c) ;
-            System.out.println(format.toString()) ;
+            //System.out.println(format.toString()) ;
             switch (format){
                 case Hex:
                     dtmMemory.setValueAt("0x"+String.format("%05X",r & 0xFFFFF),c,1);
@@ -85,10 +82,13 @@ public class MemoryTableWindow extends JFrame {
                 case Command:
                     Command command = CommandDecoder.decodeCommand(r,main) ;
                     if (command != null) {
-                        dtmMemory.setValueAt(command.getName(), c, 1);
+                        dtmMemory.setValueAt(command.getName() , c, 1);
                     }else{
                         dtmMemory.setValueAt("NOOP", c, 1);
                     }
+                    break;
+                case Decimal:
+                    dtmMemory.setValueAt(r,c,1);
                     break;
 
             }

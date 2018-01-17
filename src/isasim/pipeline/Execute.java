@@ -15,7 +15,9 @@ public class Execute extends PipelineStage {
     public Execute(Processor p ){
         super(p) ;
     }
-
+    public void flush(){
+        this.Buffer.clear();
+    }
     @Override
     public String GetStringFormatOfPipelineStage() {
         String returnValue = "" ;
@@ -66,12 +68,6 @@ public class Execute extends PipelineStage {
             ra2 = ((JCommand) c).getOffset() ;
             Parameter = String.valueOf(ra1+ra2) ;
         }
-
-
-
-
-
-
         returnValue = NameOfCommand + Parameter ;
         return returnValue ;
     }

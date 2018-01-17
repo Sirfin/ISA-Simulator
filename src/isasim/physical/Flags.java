@@ -1,7 +1,11 @@
 package isasim.physical;
 
 /**
- * Created by ftoet on 19.11.2017.
+ *
+ *
+ * Die Klasse um die momentanen Werte der Flags zu speichern.
+ *  @see <a href="https://community.arm.com/processors/b/blog/posts/condition-codes-1-condition-flags-and-codes">ARM Flags</a>
+ *@author Fin Töter
  */
 public class Flags {
     public boolean isN() {
@@ -45,6 +49,7 @@ public class Flags {
     boolean Z ;
     boolean C ;
     boolean V;
+
 
     public Flags() {
     }
