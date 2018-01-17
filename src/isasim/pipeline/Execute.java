@@ -78,7 +78,6 @@ public class Execute extends PipelineStage {
             Command c = Buffer.pop();
             c.execute(p);
         }
-        System.out.println(Buffer);
     }
     public void SendToBuffer(Command a){
         Buffer.addLast(a);

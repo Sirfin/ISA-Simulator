@@ -37,7 +37,7 @@ public class Processor {
     public ProgramCounter PC = new ProgramCounter(this) ;
 
     public Flags flags = new Flags() ;
-
+    boolean halted = false ;
     /**
      * Gibt eine Referenz auf die Flags des Prozessors zurück
      * @see Flags
@@ -145,6 +145,27 @@ public class Processor {
         ticker = new Ticker(this) ;
         new Thread(ticker).start();
     }
+
+    /**
+     *
+     * @param n How many Ticks
+     */
+    public Processor(int n){
+        initRegister();
+        initMemory() ;
+        if (n >0) {
+            for (int i = 0; (i < n) && (!halted); i++) {
+                this.OnTick();
+            }
+        }
+        if (n == 0){
+            while (!halted){
+                this.OnTick();
+            }
+        }
+    }
+
+
     public void Reset(){
         this.Halt();
         this.PipelineFlush();
@@ -154,7 +175,7 @@ public class Processor {
         for (int i = 0 ; i < 32 ; i++){
             Registerbank.get(i).save(0);
         }
-        this.mw.UpdatePipeline();
+        if(mw!=null) this.mw.UpdatePipeline();
 
     }
     /**
@@ -162,9 +183,10 @@ public class Processor {
      *
      */
     public void Halt(){
-
-            ticker.stop();
-            mw.UpdatePipeline();
+            this.halted = true ;
+            ProcessorTextOutput.DumpProcessor(this);
+            if (ticker!=null)ticker.stop();
+            if (mw!=null)mw.UpdatePipeline();
     }
 
     /**
@@ -174,7 +196,7 @@ public class Processor {
         if (ticker.halted) {
             ticker.start();
             new Thread(ticker).start();
-            mw.UpdatePipeline();
+            if (mw!=null)mw.UpdatePipeline();
         }
     }
 
@@ -187,7 +209,7 @@ public class Processor {
         decode.OnTick();
         fetch.OnTick();
         PC.increment();
-        mw.UpdatePipeline();
+        if (mw !=null)mw.UpdatePipeline();
     }
 
     /**
