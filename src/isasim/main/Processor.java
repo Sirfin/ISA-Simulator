@@ -148,7 +148,7 @@ public class Processor {
      *
      * @param n How many Ticks
      */
-    public Processor(int n,String PathToFile){
+    public Processor(int n,String PathToFile,String outputPath){
         initRegister();
         initMemory() ;
         RomLoader.FileInRom(PathToFile,this,0);
@@ -165,6 +165,7 @@ public class Processor {
                 this.OnTick();
             }
         }
+        ProcessorTextOutput.DumpProcessor(this,outputPath);
     }
 
 
@@ -186,7 +187,7 @@ public class Processor {
      */
     public void Halt(){
             this.halted = true ;
-            ProcessorTextOutput.DumpProcessor(this);
+
             if (ticker!=null)ticker.stop();
             if (mw!=null)mw.UpdatePipeline();
     }

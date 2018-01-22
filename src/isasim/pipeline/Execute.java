@@ -94,6 +94,9 @@ public class Execute extends PipelineStage {
                         ((StoreCommand) c).getQuelle1().getAddress(),output));
                 return ;
             }
+            if (c instanceof JCommand){
+                return ;
+            }
             p.getMWB().SendToBuffer(new Triple<CommandType,RegisterAddress,Integer>(CommandType.OTHER,
                     c.getZiel().getAddress(),output));
             return;

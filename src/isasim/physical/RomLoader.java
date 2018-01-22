@@ -27,7 +27,10 @@ public class RomLoader {
     public static void FileInRom(String PathToFile, Processor main, int offset){
         Path path = Paths.get(PathToFile);
         byte[] data ;
-
+        if (!Files.exists(path)){
+            System.out.println("Die Datei " +PathToFile+ " exisitiert nicht");
+            return ;
+        }
         try {
             data = Files.readAllBytes(path) ;
             if (data.length % 4 != 0){

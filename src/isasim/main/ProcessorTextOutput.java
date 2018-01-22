@@ -11,8 +11,8 @@ import java.util.*;
  * Created by ftoet on 17.01.2018.
  */
 public class ProcessorTextOutput {
-    public static void DumpProcessor(Processor processor){
-        Path file = Paths.get("Dump.txt") ;
+    public static void DumpProcessor(Processor processor,String outputPath){
+        Path file = Paths.get(outputPath) ;
         System.out.println("Dumping File");
         List<String> lines = new ArrayList<>() ;
         lines.add("Register:") ;
