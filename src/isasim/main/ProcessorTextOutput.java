@@ -19,6 +19,5 @@ public class ProcessorTextOutput {
         for (int i = 0 ; i < processor.ram.getMemory().size() ; i++){
             lines.add(i + ":" + processor.ram.load(i)) ;
         }
-
     }
 }
