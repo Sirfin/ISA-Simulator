@@ -13,7 +13,7 @@ import java.util.BitSet;
  */
 public class Register {
     private Integer memory ;
-
+    private Integer buffer ;
     private RegisterAddress address ;
     public Register(int size,int address){
         memory = 0 ;
@@ -29,9 +29,11 @@ public class Register {
      * @param ToSave Wert
      */
     public void save(int ToSave){
-        this.memory = ToSave ;
+        this.buffer = ToSave ;
     }
-
+    public void Update(){
+        this.memory = this.buffer ;
+    }
     /**
      * Läd den Wert des Register
      * @return Wert

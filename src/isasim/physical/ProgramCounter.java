@@ -9,7 +9,7 @@ import isasim.main.Processor;
  */
 public class ProgramCounter {
     private Processor processor ;
-
+    private Integer buffer ;
     /**
      * Initialisiert den PC mit dem zugehörigen Prozessor
      * @see Processor
@@ -35,8 +35,7 @@ public class ProgramCounter {
      * @param count Neuer Wert
      */
     public void setCount(int count){
-
-        value = count ;
+        buffer = count ;
         overwridden = true ;
     }
 
@@ -48,9 +47,9 @@ public class ProgramCounter {
             overwridden = false ;
             return ;
         }
-        value++ ;
+        buffer = value +1 ;  ;
         if (value >= processor.ROM_SIZE_WORDS){
-            value = 0;
+            buffer = 0;
         }
     }
 
@@ -58,6 +57,9 @@ public class ProgramCounter {
      * Resettet den Zähler
      */
     public void reset(){
-        value = 0 ;
+        value = 0 ;buffer =  0 ;
+    }
+    public void Update(){
+        value = buffer ;
     }
 }

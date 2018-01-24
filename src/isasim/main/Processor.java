@@ -213,6 +213,12 @@ public class Processor {
         decode.OnTick();
         fetch.OnTick();
         PC.increment();
+        PC.Update();
+        for (Register r : Registerbank){
+            r.Update();
+        }
+        ram.Update();
+
         if (mw !=null)mw.UpdatePipeline();
     }
 

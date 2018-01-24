@@ -48,6 +48,7 @@ public class RomLoader {
                 Int[3] = data[i+3] ;
                 int a = byteArrayToLeInt(Int) ;
                 main.rom.store(offset+(i/4),a);
+                main.rom.Update();
             }
         } catch (IOException e) {
             e.printStackTrace();

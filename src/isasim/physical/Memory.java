@@ -1,6 +1,7 @@
 package isasim.physical;
 
 import isasim.helper.BitSetHelper;
+import isasim.helper.Tuple;
 
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -11,7 +12,7 @@ import java.util.BitSet;
  */
 public class Memory {
     ArrayList<Integer> memory  = new ArrayList<>() ;
-
+    private Tuple<Integer,Integer> Buffer ;
     /**
      * Initialisiert den Speicher mit einer Größe.
      * @param size Die spezifizierte Größe
@@ -52,7 +53,13 @@ public class Memory {
      */
     public void store(int Address,int value){
         if (memory.size() > Address) {
-            memory.set(Address, value);
+            Buffer = new Tuple<Integer,Integer>(Address,value) ;
+        }
+    }
+    public void Update(){
+        if (this.Buffer != null){
+            memory.set(Buffer.x,Buffer.y) ;
+            Buffer = null ;
         }
     }
 }
