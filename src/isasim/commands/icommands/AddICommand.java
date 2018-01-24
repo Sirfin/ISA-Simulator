@@ -1,6 +1,5 @@
 package isasim.commands.icommands;
 
-import isasim.commands.rcommands.RCommand;
 import isasim.helper.Tuple;
 import isasim.main.Processor;
 import isasim.physical.Register;
@@ -20,7 +19,7 @@ public class AddICommand extends ICommand{
     }
 
     @Override
-    public void execute(Processor main) {
+    public int execute(Processor main) {
         int sum = this.Value1 + this.Value2 ;
         if (setFlags){
             long a = this.Value1 + this.Value2 ;
@@ -30,7 +29,8 @@ public class AddICommand extends ICommand{
             underflow = a < Integer.MIN_VALUE ;
             main.setFlags(sum,overflow,underflow);
         }
-        main.getMWB().SendToBuffer(new Tuple<RegisterAddress,Integer>(Ziel.getAddress(),sum));
+        //main.getMWB().SendToBuffer(new Tuple<RegisterAddress,Integer>(Ziel.getAddress(),sum));
 
+        return sum;
     }
 }

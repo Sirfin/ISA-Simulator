@@ -18,7 +18,9 @@ public class MoveICommand extends  ICommand {
     }
 
     @Override
-    public void execute(Processor main) {
-        getQuelle1().save(this.getValue2());
+    public int execute(Processor main) {
+        this.setZiel(this.getQuelle1());
+        return this.getValue2();
+
     }
 }

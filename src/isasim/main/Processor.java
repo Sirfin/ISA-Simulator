@@ -5,10 +5,7 @@ import isasim.commands.jcommands.Condition;
 import isasim.commands.rcommands.AddCommand;
 import isasim.commands.Command;
 import isasim.gui.MainWindow;
-import isasim.physical.Flags;
-import isasim.physical.Memory;
-import isasim.physical.ProgramCounter;
-import isasim.physical.Register;
+import isasim.physical.*;
 import isasim.pipeline.*;
 
 import java.util.ArrayList;
@@ -27,10 +24,11 @@ public class Processor {
     public int ROM_SIZE_WORDS = 1000 ;
     public MainWindow mw ;
     public List<Register> Registerbank = new ArrayList<Register>() ;
-    private MemoryWriteBack MWB = new MemoryWriteBack(this) ;
+    private RegisterWriteBack RWB = new RegisterWriteBack(this) ;
     private Execute exec = new Execute(this) ;
     private Fetch fetch = new Fetch(this) ;
     private DecodeLoad decode = new DecodeLoad(this) ;
+    private MemoryWriteBack MWB = new MemoryWriteBack(this);
     private Ticker ticker ;
     public Memory rom ;
     public Memory ram ;
@@ -150,12 +148,16 @@ public class Processor {
      *
      * @param n How many Ticks
      */
-    public Processor(int n){
+    public Processor(int n,String PathToFile,String outputPath){
         initRegister();
         initMemory() ;
+        RomLoader.FileInRom(PathToFile,this,0);
         if (n >0) {
             for (int i = 0; (i < n) && (!halted); i++) {
                 this.OnTick();
+            }
+            if (!halted){
+                this.Halt();
             }
         }
         if (n == 0){
@@ -163,6 +165,7 @@ public class Processor {
                 this.OnTick();
             }
         }
+        ProcessorTextOutput.DumpProcessor(this,outputPath);
     }
 
 
@@ -184,7 +187,7 @@ public class Processor {
      */
     public void Halt(){
             this.halted = true ;
-            ProcessorTextOutput.DumpProcessor(this);
+
             if (ticker!=null)ticker.stop();
             if (mw!=null)mw.UpdatePipeline();
     }
@@ -204,6 +207,7 @@ public class Processor {
      * Tick für die Frequenz
      */
     public void OnTick(){
+        RWB.OnTick();
         MWB.OnTick();
         exec.OnTick();
         decode.OnTick();
@@ -250,12 +254,12 @@ public class Processor {
     }
 
     /**
-     * Gibt die Referenz auf die MWB Stage zurück.
-     * @see MemoryWriteBack
-     * @return MWB
+     * Gibt die Referenz auf die RWB Stage zurück.
+     * @see RegisterWriteBack
+     * @return RWB
      */
-    public MemoryWriteBack getMWB() {
-        return MWB;
+    public RegisterWriteBack getRWB() {
+        return RWB;
     }
 
     /**
@@ -282,4 +286,8 @@ public class Processor {
      * @return decode
      */
     public DecodeLoad getDecode(){return decode;}
+
+    public MemoryWriteBack getMWB() {
+        return MWB;
+    }
 }

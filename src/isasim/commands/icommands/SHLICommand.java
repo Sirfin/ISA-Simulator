@@ -20,7 +20,7 @@ public class SHLICommand extends ICommand{
     }
 
     @Override
-    public void execute(Processor main) {
+    public int execute(Processor main) {
         int sum = this.Value1 << this.Value2 ;
         if (setFlags){
             long a = this.Value1 << this.Value2 ;
@@ -31,6 +31,6 @@ public class SHLICommand extends ICommand{
             main.setFlags(sum,overflow,underflow);
         }
 
-        main.getMWB().SendToBuffer(new Tuple<RegisterAddress,Integer>(Ziel.getAddress(),sum));
+        return sum ;
     }
 }

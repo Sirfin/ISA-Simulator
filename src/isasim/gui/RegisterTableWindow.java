@@ -19,7 +19,6 @@ public class RegisterTableWindow extends JFrame {
     public RegisterTableWindow(MainWindow mainWindow){
         super("RegTableWindow") ;
         this.mainWindow = mainWindow ;
-        System.out.println("Got Called");
         this.setLayout(new BorderLayout());
         this.add(TablePanel,BorderLayout.CENTER) ;
         TablePanel.setBackground(Color.white);
@@ -56,7 +55,6 @@ public class RegisterTableWindow extends JFrame {
     }
     public void UpdateTable(){
         java.util.List<Register> registers = mainWindow.processor.Registerbank ;
-        System.out.println(registers.size());
         for (int c = 0 ; c < registers.size() ; c++){
             Register r = registers.get(c) ;
             //dtmRegister.setValueAt(r.load(),c,1);

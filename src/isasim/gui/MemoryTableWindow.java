@@ -29,7 +29,6 @@ public class MemoryTableWindow extends JFrame {
         super(name) ;
         this.mainWindow = mainWindow ;
         this.memory = memory ;
-        System.out.println("Got Called");
         this.setLayout(new BorderLayout());
         this.add(TablePanel,BorderLayout.CENTER) ;
         TablePanel.setBackground(Color.white);

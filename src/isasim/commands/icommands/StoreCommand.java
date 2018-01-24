@@ -18,7 +18,9 @@ public class StoreCommand extends ICommand{
     }
 
     @Override
-    public void execute(Processor main) {
-        main.ram.store(this.getZiel().load()+this.getValue2(),this.getValue1());
+    public int execute(Processor main) {
+
+        return this.getZiel().load()+this.getValue2() ;
+        //Value1 liest die execute
     }
 }

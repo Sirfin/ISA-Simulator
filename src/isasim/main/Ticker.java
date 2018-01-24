@@ -44,7 +44,6 @@ public class Ticker implements Runnable{
     @Override
     public void run() {
         while (!halted) {
-            System.out.println("Tick");
             proc.OnTick() ;
             try {
                 Thread.sleep(frequency);

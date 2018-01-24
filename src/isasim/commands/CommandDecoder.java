@@ -128,7 +128,6 @@ public final class CommandDecoder {
                 AluFunction = (Code << 16) >>> 28;
                 int Immediate = (Code << 20) >>> 20;
 
-                System.out.println("OpcodeWithout: " + opCode_Without_Command_Type) ;
                 switch (opCode_Without_Command_Type) {
                     case 0: //movi Command
                         return new MoveICommand(p.Registerbank.get(RegisterNumber1), Immediate, p.Registerbank.get(RegisterNumber2));
